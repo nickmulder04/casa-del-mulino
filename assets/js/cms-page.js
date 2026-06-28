@@ -73,6 +73,54 @@ const applyContactContent = (contact) => {
 
 const htmlList = (items = [], mapper) => items.map(mapper).join("");
 
+const fallbackProducts = [
+  {
+    id: "limoncello",
+    name: "Casa del Mulino Limoncello",
+    flavor: "Citroen",
+    image: "/images/product-limoncello.jpg",
+    short: "Fris, zonnig en intens citroenachtig.",
+    size: "500 ml",
+    alcohol: "30% vol"
+  },
+  {
+    id: "arancello",
+    name: "Casa del Mulino Arancello",
+    flavor: "Sinaasappel",
+    image: "/images/product-arancello.jpg",
+    short: "Warme sinaasappeltonen met een bitterzoete finale.",
+    size: "500 ml",
+    alcohol: "30% vol"
+  },
+  {
+    id: "meloncello",
+    name: "Casa del Mulino Meloncello",
+    flavor: "Meloen",
+    image: "/images/product-meloncello.jpg",
+    short: "Licht, rond en fruitig met zachte meloen.",
+    size: "500 ml",
+    alcohol: "30% vol"
+  }
+];
+
+const fallbackCollections = [
+  {
+    id: "duo",
+    name: "Duo Collectie",
+    price: 45,
+    image: "/images/limoncello-arancello-case.jpg",
+    description: "De perfecte combinatie om twee smaken van Casa del Mulino te ontdekken."
+  },
+  {
+    id: "signature",
+    name: "Signature Collectie",
+    price: 65,
+    badge: "Complete Collectie",
+    image: "/images/product-collection-three.jpg",
+    description: "Ontdek de volledige collectie van Casa del Mulino. Drie unieke smaken, samengebracht in een exclusieve selectie."
+  }
+];
+
 const revealRenderedContent = (root = document) => {
   root.querySelectorAll(".reveal:not(.in-view)").forEach((element) => {
     element.classList.add("in-view");
@@ -122,8 +170,9 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
   }
 
   const productGrid = document.querySelector("#collectie .product-grid");
-  if (productGrid && products?.products?.length) {
-    productGrid.innerHTML = htmlList(products.products, (product, index) => `
+  const productItems = products?.products?.length ? products.products : fallbackProducts;
+  if (productGrid && productItems.length) {
+    productGrid.innerHTML = htmlList(productItems, (product, index) => `
       <article class="product-card product-card-large reveal accent-${product.id}">
         <a class="product-media" href="${product.id}.html" aria-label="Bekijk details van ${product.name}">
           <img src="${cmsPath(product.image)}" loading="lazy" alt="${product.name}">
@@ -141,8 +190,9 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
   }
 
   const bundleGrid = document.querySelector(".collection-bundle-grid");
-  if (bundleGrid && collections?.collections?.length) {
-    bundleGrid.innerHTML = htmlList(collections.collections, (collection) => `
+  const collectionItems = collections?.collections?.length ? collections.collections : fallbackCollections;
+  if (bundleGrid && collectionItems.length) {
+    bundleGrid.innerHTML = htmlList(collectionItems, (collection) => `
       <article class="collection-bundle reveal">
         <img src="${cmsPath(collection.image)}" loading="lazy" alt="${collection.name}">
         <div>
@@ -316,4 +366,7 @@ const loadPageContent = async () => {
   revealRenderedContent();
 };
 
-loadPageContent();
+loadPageContent().catch(() => {
+  applyHomeContent({ products: { products: fallbackProducts }, collections: { collections: fallbackCollections } });
+  revealRenderedContent();
+});
