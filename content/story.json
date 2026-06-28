@@ -1,0 +1,19 @@
+{
+  "title": "Ons verhaal",
+  "heroTitle": "Van Mulder naar Mulino",
+  "heroText": "Italiaanse traditie ontmoet Nederlands vakmanschap.",
+  "heroImage": "assets/images/hero-limoncello-citrus-trees.jpg",
+  "sections": [
+    { "title": "Het begin", "text": "Voor Casa del Mulino begon het verhaal tijdens een gezellige spareribproeverij met vrienden. Een fles limoncello viel tegen, waarna de opmerking bleef hangen: dat kun jij beter." },
+    { "title": "Van Mulder naar Mulino", "text": "Mijn achternaam is Mulder. Het Italiaanse woord voor molen is Mulino. Zo ontstond Casa del Mulino: Het Huis van de Molen." },
+    { "title": "Het verschil zit in de tijd", "text": "Goede likeur begint met geduld. Iedere batch wordt in kleine hoeveelheden gemaakt en met de hand afgewerkt." },
+    { "title": "Onze filosofie", "text": "Casa del Mulino wordt gemaakt om te delen. De mooiste herinneringen ontstaan niet alleen door wat je schenkt, maar vooral door met wie je het deelt." }
+  ],
+  "pillars": [
+    { "title": "Italiaanse inspiratie", "text": "Geïnspireerd door langzaam genieten, lange zomeravonden en samen aan tafel zitten." },
+    { "title": "Nederlands vakmanschap", "text": "Iedere fles wordt volledig in Nederland gemaakt, met precisie en liefde voor kwaliteit." },
+    { "title": "Fatto a Mano", "text": "Van schillen tot etiketteren: iedere stap gebeurt met de hand." }
+  ],
+  "seoTitle": "Ons verhaal | Casa del Mulino",
+  "seoDescription": "Ontdek het verhaal van Mulder naar Mulino: Italiaanse traditie en Nederlands vakmanschap."
+}

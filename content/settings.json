@@ -1,0 +1,29 @@
+{
+  "siteTitle": "Casa del Mulino",
+  "tagline": "Fatto a Mano - Gemaakt in Nederland",
+  "domain": "https://casadelmulino.nl",
+  "primaryDomain": "casadelmulino.nl",
+  "redirectDomains": [
+    "cellodelmulino.nl"
+  ],
+  "email": "info@casadelmulino.nl",
+  "instagramUrl": "https://www.instagram.com/casa.del.mulino",
+  "whatsappNumber": "31636188895",
+  "contactReactionTime": "Binnen 1 tot 2 werkdagen",
+  "shipping": {
+    "country": "Nederland",
+    "cost": 6.95,
+    "freeFrom": 75
+  },
+  "music": {
+    "active": true,
+    "title": "Limoncello del Mulino",
+    "file": "assets/audio/limoncello-del-mulino.mp3",
+    "cover": "assets/images/casa-del-mulino-official-logo.jpg"
+  },
+  "seo": {
+    "defaultTitle": "Casa del Mulino | Ambachtelijke Italiaanse likeur uit Nederland",
+    "defaultDescription": "Casa del Mulino maakt ambachtelijke limoncello, arancello en meloncello in kleine batches. Italiaanse traditie, Nederlands vakmanschap.",
+    "ogImage": "assets/images/casa-del-mulino-official-logo.jpg"
+  }
+}

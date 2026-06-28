@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "question": "Waarom is de limoncello troebel?",
+      "answer": "Door natuurlijke citrusolien kan de likeur troebel worden. Dat hoort bij ambachtelijke limoncello.",
+      "category": "Product"
+    },
+    {
+      "question": "Waarom bewaar je hem in de vriezer?",
+      "answer": "Casa del Mulino komt het mooist tot zijn recht wanneer hij ijskoud wordt geserveerd.",
+      "category": "Serveren"
+    },
+    {
+      "question": "Hoe lang blijft hij goed?",
+      "answer": "Ongeopend blijft de likeur minimaal een jaar goed wanneer hij koel en donker wordt bewaard.",
+      "category": "Bewaren"
+    },
+    {
+      "question": "Wordt alles echt met de hand gemaakt?",
+      "answer": "Ja. Schillen, filteren, mengen, bottelen en etiketteren gebeuren handmatig in kleine batches.",
+      "category": "Ambacht"
+    }
+  ]
+}

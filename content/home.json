@@ -1,0 +1,25 @@
+{
+  "title": "Casa del Mulino",
+  "hero": {
+    "eyebrow": "Fatto a Mano",
+    "title": "Casa del Mulino",
+    "subtitle": "Italiaanse traditie. Nederlands vakmanschap. Handgemaakt in Nederland.",
+    "image": "assets/images/hero-limoncello-citrus-trees.jpg",
+    "buttons": [
+      { "label": "Ontdek het verhaal", "url": "verhaal.html" },
+      { "label": "Bekijk de collectie", "url": "smaken.html" }
+    ]
+  },
+  "sections": [
+    {
+      "id": "story",
+      "title": "Een familienaam vertaald naar Italiaanse warmte",
+      "text": "Casa del Mulino betekent letterlijk Het Huis van de Molen. De naam ontstond vanuit mijn achternaam Mulder. Mulino is het Italiaanse woord voor molen en vormt de verbinding tussen Nederlandse roots en Italiaanse traditie.",
+      "image": "assets/images/casa-del-mulino-flessen.jpg",
+      "buttonLabel": "Ontdek het volledige merkverhaal",
+      "buttonUrl": "verhaal.html"
+    }
+  ],
+  "seoTitle": "Casa del Mulino | Ambachtelijke Italiaanse likeur uit Nederland",
+  "seoDescription": "Casa del Mulino maakt Limoncello, Arancello en Meloncello in kleine batches. Italiaanse traditie, Nederlands vakmanschap."
+}

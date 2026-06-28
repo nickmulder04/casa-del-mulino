@@ -1,0 +1,34 @@
+{
+  "collections": [
+    {
+      "id": "duo",
+      "name": "Duo Collectie",
+      "price": 45,
+      "size": "2 x 500 ml",
+      "image": "assets/images/limoncello-arancello-case.jpg",
+      "available": true,
+      "description": "De perfecte combinatie om twee smaken van Casa del Mulino te ontdekken.",
+      "bundle": [
+        "Kies zelf twee flessen",
+        "Limoncello + Arancello",
+        "Limoncello + Meloncello",
+        "Arancello + Meloncello"
+      ]
+    },
+    {
+      "id": "signature",
+      "name": "Signature Collectie",
+      "price": 65,
+      "size": "3 x 500 ml",
+      "image": "assets/images/product-collection-three.jpg",
+      "available": true,
+      "badge": "Complete Collectie",
+      "description": "Ontdek de volledige collectie van Casa del Mulino. Drie unieke smaken, samengebracht in een exclusieve selectie.",
+      "bundle": [
+        "Casa del Mulino Limoncello",
+        "Casa del Mulino Arancello",
+        "Casa del Mulino Meloncello"
+      ]
+    }
+  ]
+}

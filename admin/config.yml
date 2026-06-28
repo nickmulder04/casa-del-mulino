@@ -1,0 +1,389 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+site_url: "https://casadelmulino.nl"
+display_url: "https://casadelmulino.nl"
+logo_url: "/assets/images/casa-del-mulino-official-logo.jpg"
+locale: "nl"
+
+collections:
+  - name: "settings"
+    label: "Instellingen"
+    files:
+      - name: "settings"
+        label: "Algemene instellingen"
+        file: "content/settings.json"
+        fields:
+          - { label: "Site titel", name: "siteTitle", widget: "string" }
+          - { label: "Pay-off", name: "tagline", widget: "string" }
+          - { label: "Domein", name: "domain", widget: "string", required: false }
+          - { label: "E-mail", name: "email", widget: "string" }
+          - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+          - { label: "WhatsApp nummer internationaal", name: "whatsappNumber", widget: "string" }
+          - { label: "Reactietijd", name: "contactReactionTime", widget: "string", required: false }
+          - label: "Verzending"
+            name: "shipping"
+            widget: "object"
+            fields:
+              - { label: "Land", name: "country", widget: "string", default: "Nederland" }
+              - { label: "Verzendkosten", name: "cost", widget: "number", value_type: "float", default: 6.95 }
+              - { label: "Gratis verzending vanaf", name: "freeFrom", widget: "number", value_type: "float", default: 75 }
+          - label: "Muziek"
+            name: "music"
+            widget: "object"
+            fields:
+              - { label: "Actief", name: "active", widget: "boolean", default: true }
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "MP3-bestand", name: "file", widget: "file", media_library: { config: { multiple: false } } }
+              - { label: "Albumafbeelding", name: "cover", widget: "image", required: false }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Standaard titel", name: "defaultTitle", widget: "string" }
+              - { label: "Meta description", name: "defaultDescription", widget: "text" }
+              - { label: "Open Graph afbeelding", name: "ogImage", widget: "image", required: false }
+
+  - name: "products"
+    label: "Producten"
+    files:
+      - name: "products"
+        label: "Producten beheren"
+        file: "content/products.json"
+        fields:
+          - label: "Producten"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.price}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Bijvoorbeeld limoncello. Niet wijzigen zodra live." }
+              - { label: "Naam", name: "name", widget: "string" }
+              - { label: "Subtitel", name: "subtitle", widget: "string", required: false }
+              - { label: "Smaak", name: "flavor", widget: "string" }
+              - { label: "Accentkleur", name: "accent", widget: "color", required: false }
+              - { label: "Prijs", name: "price", widget: "number", value_type: "float" }
+              - { label: "Inhoud", name: "size", widget: "string", default: "500 ml" }
+              - { label: "Alcoholpercentage", name: "alcohol", widget: "string", default: "30% vol" }
+              - { label: "Beschikbaar", name: "available", widget: "boolean", default: true }
+              - { label: "Voorraadstatus", name: "stockStatus", widget: "string", required: false }
+              - { label: "Collectie", name: "collection", widget: "string", required: false }
+              - { label: "Binnenkort verkrijgbare inhoud", name: "comingSoonSize", widget: "string", required: false }
+              - { label: "Hoofdfoto", name: "image", widget: "image" }
+              - { label: "Galerij", name: "gallery", widget: "list", field: { label: "Foto", name: "image", widget: "image" } }
+              - { label: "Korte beschrijving", name: "short", widget: "string" }
+              - { label: "Beschrijving", name: "description", widget: "text" }
+              - { label: "Uitgebreide omschrijving", name: "longDescription", widget: "text", required: false }
+              - { label: "Ingredienten", name: "ingredients", widget: "list", field: { label: "Ingredient", name: "ingredient", widget: "string" } }
+              - { label: "Serveertips", name: "serveTips", widget: "list", field: { label: "Tip", name: "tip", widget: "string" } }
+              - { label: "Foodpairing", name: "foodPairing", widget: "list", field: { label: "Combinatie", name: "pairing", widget: "string" } }
+              - { label: "Batchinformatie", name: "batchInfo", widget: "text", required: false }
+              - { label: "SEO titel", name: "seoTitle", widget: "string", required: false }
+              - { label: "SEO beschrijving", name: "seoDescription", widget: "text", required: false }
+
+  - name: "collections"
+    label: "Collecties"
+    files:
+      - name: "collections"
+        label: "Collecties beheren"
+        file: "content/collections.json"
+        fields:
+          - label: "Collecties"
+            name: "collections"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.price}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Naam", name: "name", widget: "string" }
+              - { label: "Prijs", name: "price", widget: "number", value_type: "float" }
+              - { label: "Inhoud", name: "size", widget: "string" }
+              - { label: "Foto", name: "image", widget: "image" }
+              - { label: "Beschikbaar", name: "available", widget: "boolean", default: true }
+              - { label: "Badge", name: "badge", widget: "string", required: false }
+              - { label: "Beschrijving", name: "description", widget: "text" }
+              - { label: "Inhoud collectie", name: "bundle", widget: "list", field: { label: "Regel", name: "line", widget: "string" } }
+
+  - name: "recipes"
+    label: "Recepten"
+    files:
+      - name: "recipes"
+        label: "Recepten beheren"
+        file: "content/recipes.json"
+        fields:
+          - label: "Recepten"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string", hint: "Bijvoorbeeld limoncello-spritz" }
+              - { label: "Korte omschrijving", name: "summary", widget: "text" }
+              - { label: "SEO titel", name: "seoTitle", widget: "string", required: false }
+              - { label: "SEO beschrijving", name: "seoDescription", widget: "text", required: false }
+              - { label: "Smaak", name: "flavor", widget: "select", options: ["Limoncello", "Arancello", "Meloncello"] }
+              - { label: "Foto", name: "image", widget: "image" }
+              - { label: "Bereidingstijd", name: "time", widget: "string", required: false }
+              - { label: "Moeilijkheid", name: "difficulty", widget: "string", required: false }
+              - { label: "Porties", name: "servings", widget: "string", required: false }
+              - { label: "Productlink", name: "productUrl", widget: "string", required: false }
+              - { label: "Categorieen", name: "categories", widget: "list", field: { label: "Categorie", name: "category", widget: "string" } }
+              - { label: "Ingredienten", name: "ingredients", widget: "list", field: { label: "Ingredient", name: "ingredient", widget: "string" } }
+              - { label: "Bereidingswijze", name: "steps", widget: "list", field: { label: "Stap", name: "step", widget: "text" } }
+              - { label: "Tips", name: "tips", widget: "list", field: { label: "Tip", name: "tip", widget: "text" } }
+              - { label: "Serveeradvies", name: "serveAdvice", widget: "text", required: false }
+
+  - name: "faq"
+    label: "FAQ"
+    files:
+      - name: "faq"
+        label: "Veelgestelde vragen"
+        file: "content/faq.json"
+        fields:
+          - label: "Vragen"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.question}}"
+            fields:
+              - { label: "Vraag", name: "question", widget: "string" }
+              - { label: "Antwoord", name: "answer", widget: "text" }
+              - { label: "Categorie", name: "category", widget: "string", required: false }
+
+  - name: "reviews"
+    label: "Reviews"
+    files:
+      - name: "reviews"
+        label: "Reviews beheren"
+        file: "content/reviews.json"
+        fields:
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.stars}} sterren"
+            fields:
+              - { label: "Naam", name: "name", widget: "string" }
+              - { label: "Datum", name: "date", widget: "datetime", date_format: "DD-MM-YYYY", time_format: false }
+              - { label: "Sterren", name: "stars", widget: "number", min: 1, max: 5, value_type: "int" }
+              - { label: "Tekst", name: "text", widget: "text" }
+              - { label: "Foto", name: "photo", widget: "image", required: false }
+
+  - name: "pages"
+    label: "Pagina's"
+    files:
+      - name: "pages"
+        label: "Pagina's beheren"
+        file: "content/pages.json"
+        fields:
+          - label: "Pagina's"
+            name: "pages"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Slug", name: "slug", widget: "string" }
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "SEO titel", name: "seoTitle", widget: "string", required: false }
+              - { label: "Meta description", name: "metaDescription", widget: "text", required: false }
+              - { label: "Hero afbeelding", name: "heroImage", widget: "image", required: false }
+              - label: "Tekstblokken"
+                name: "blocks"
+                widget: "list"
+                fields:
+                  - { label: "Kop", name: "heading", widget: "string" }
+                  - { label: "Tekst", name: "text", widget: "text" }
+
+  - name: "footer"
+    label: "Footer"
+    files:
+      - name: "footer"
+        label: "Footerlinks"
+        file: "content/footer.json"
+        fields:
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+  - name: "home"
+    label: "Homepagina"
+    files:
+      - name: "home"
+        label: "Homepagina"
+        file: "content/home.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Subtitel", name: "subtitle", widget: "text" }
+              - { label: "Afbeelding", name: "image", widget: "image" }
+              - label: "Buttons"
+                name: "buttons"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+          - label: "Secties"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string", required: false }
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "text" }
+              - { label: "Afbeelding", name: "image", widget: "image", required: false }
+              - { label: "Button label", name: "buttonLabel", widget: "string", required: false }
+              - { label: "Button URL", name: "buttonUrl", widget: "string", required: false }
+          - { label: "SEO titel", name: "seoTitle", widget: "string", required: false }
+          - { label: "SEO beschrijving", name: "seoDescription", widget: "text", required: false }
+
+  - name: "story"
+    label: "Ons verhaal"
+    files:
+      - name: "story"
+        label: "Ons verhaal"
+        file: "content/story.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Hero titel", name: "heroTitle", widget: "string" }
+          - { label: "Hero tekst", name: "heroText", widget: "text" }
+          - { label: "Hero afbeelding", name: "heroImage", widget: "image" }
+          - label: "Secties"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "text" }
+          - label: "Pijlers"
+            name: "pillars"
+            widget: "list"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "text" }
+          - { label: "SEO titel", name: "seoTitle", widget: "string", required: false }
+          - { label: "SEO beschrijving", name: "seoDescription", widget: "text", required: false }
+
+  - name: "commercial"
+    label: "Collecties & verkoop"
+    files:
+      - name: "limited_editions"
+        label: "Limited Editions"
+        file: "content/limited-editions.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Naam", name: "name", widget: "string" }
+              - { label: "Beschikbaar", name: "available", widget: "boolean", default: false }
+              - { label: "Beschrijving", name: "description", widget: "text" }
+              - { label: "Afbeelding", name: "image", widget: "image", required: false }
+      - name: "gift_packages"
+        label: "Cadeaupakketten"
+        file: "content/gift-packages.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Naam", name: "name", widget: "string" }
+              - { label: "Prijs", name: "price", widget: "number", value_type: "float", required: false }
+              - { label: "Beschikbaar", name: "available", widget: "boolean", default: false }
+              - { label: "Badge", name: "badge", widget: "string", required: false }
+              - { label: "Beschrijving", name: "description", widget: "text" }
+              - { label: "Afbeelding", name: "image", widget: "image", required: false }
+
+  - name: "experiences"
+    label: "Masterclasses & proeverijen"
+    files:
+      - name: "masterclasses"
+        label: "Masterclasses"
+        file: "content/masterclasses.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Status", name: "status", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Afbeelding", name: "image", widget: "image" }
+          - label: "Kaarten"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "text" }
+      - name: "tastings"
+        label: "Proeverijen"
+        file: "content/tastings.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Status", name: "status", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Afbeelding", name: "image", widget: "image" }
+
+  - name: "brand_sections"
+    label: "Merksecties"
+    files:
+      - name: "instagram"
+        label: "Instagram sectie"
+        file: "content/instagram.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Instagram URL", name: "url", widget: "string" }
+          - { label: "Handle", name: "handle", widget: "string" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Afbeelding", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string", required: false }
+      - name: "contact"
+        label: "Contactpagina"
+        file: "content/contact.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "E-mail", name: "email", widget: "string" }
+          - { label: "WhatsApp internationaal", name: "whatsapp", widget: "string" }
+          - { label: "WhatsApp weergave", name: "whatsappDisplay", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "Instagram handle", name: "instagramHandle", widget: "string" }
+          - { label: "Reactietijd", name: "reactionTime", widget: "string" }
+          - { label: "Standaard onderwerp", name: "defaultSubject", widget: "string" }
+          - { label: "Standaard bericht", name: "defaultMessage", widget: "text" }
+          - { label: "Afbeelding", name: "image", widget: "image" }
+
+  - name: "legal"
+    label: "Juridische pagina's"
+    files:
+      - name: "legal"
+        label: "Juridische content"
+        file: "content/legal.json"
+        fields:
+          - { label: "Privacybeleid", name: "privacy", widget: "object", fields: [{ label: "Titel", name: "title", widget: "string" }, { label: "Laatst bijgewerkt", name: "updated", widget: "string", required: false }, { label: "Tekst", name: "body", widget: "text" }] }
+          - { label: "Cookiebeleid", name: "cookies", widget: "object", fields: [{ label: "Titel", name: "title", widget: "string" }, { label: "Tekst", name: "body", widget: "text" }] }
+          - { label: "Algemene voorwaarden", name: "terms", widget: "object", fields: [{ label: "Titel", name: "title", widget: "string" }, { label: "Laatst bijgewerkt", name: "updated", widget: "string", required: false }, { label: "Tekst", name: "body", widget: "text" }] }
+          - { label: "Verzendinformatie", name: "shipping", widget: "object", fields: [{ label: "Titel", name: "title", widget: "string" }, { label: "Tekst", name: "body", widget: "text" }] }
+          - { label: "Retourbeleid", name: "returns", widget: "object", fields: [{ label: "Titel", name: "title", widget: "string" }, { label: "Tekst", name: "body", widget: "text" }] }
+          - { label: "Leeftijdscontrole", name: "age", widget: "object", fields: [{ label: "Titel", name: "title", widget: "string" }, { label: "Tekst", name: "body", widget: "text" }] }
+
+  - name: "seo"
+    label: "SEO instellingen"
+    files:
+      - name: "seo"
+        label: "SEO instellingen"
+        file: "content/seo.json"
+        fields:
+          - { label: "Standaard titel", name: "defaultTitle", widget: "string" }
+          - { label: "Standaard beschrijving", name: "defaultDescription", widget: "text" }
+          - { label: "Canonical basis", name: "canonicalBase", widget: "string" }
+          - { label: "Standaard afbeelding", name: "defaultImage", widget: "image" }
+          - { label: "Twitter card", name: "twitterCard", widget: "string" }

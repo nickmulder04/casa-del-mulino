@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Afrekenen | Casa del Mulino</title>
+  <meta name="description" content="Rond uw Casa del Mulino bestelling af via WhatsApp.">
+  <link rel="canonical" href="https://casadelmulino.nl/checkout.html">
+  <meta property="og:title" content="Afrekenen | Casa del Mulino">
+  <meta property="og:description" content="Premium checkout, persoonlijk afgerond via WhatsApp.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header solid">
+    <a class="brand" href="index.html"><img src="assets/images/casa-del-mulino-official-logo.jpg" alt="" class="brand-logo"><span><strong>Casa del Mulino</strong><small>Fatto a Mano</small></span></a>
+    <nav class="main-nav visible"><a href="smaken.html">Smaken</a><a href="bestellen.html">Bestellen</a><a href="contact.html">Contact</a></nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div><p class="eyebrow">Afrekenen</p><h1>Persoonlijk afronden via WhatsApp.</h1><p>De webshopervaring is volledig voorbereid. De bestelling wordt in deze fase persoonlijk via WhatsApp bevestigd.</p></div>
+      <img src="assets/images/product-collection-three.jpg" alt="Casa del Mulino collectie">
+    </section>
+    <section class="section checkout-premium">
+      <aside class="checkout-review reveal">
+        <p class="eyebrow">Besteloverzicht</p>
+        <div data-checkout-lines></div>
+        <div class="shipping-box">
+          <span class="shipping-icon" aria-hidden="true"></span>
+          <p data-shipping-message>Gratis verzending vanaf €75,00.</p>
+          <div class="shipping-track"><i data-shipping-progress></i></div>
+          <small>Nederland: €6,95. Gratis vanaf €75,00.</small>
+        </div>
+        <dl class="checkout-totals">
+          <div><dt>Subtotaal</dt><dd data-checkout-subtotal>€0,00</dd></div>
+          <div><dt>Verzendkosten</dt><dd data-checkout-shipping>€0,00</dd></div>
+          <div><dt>Totaal</dt><dd data-checkout-total>€0,00</dd></div>
+        </dl>
+      </aside>
+      <form class="checkout-form reveal" data-whatsapp-checkout>
+        <div class="section-heading"><p class="eyebrow">Gegevens</p><h2>Leveringsinformatie</h2></div>
+        <div class="checkout-grid">
+          <label>Voornaam<input name="voornaam" autocomplete="given-name" required></label>
+          <label>Achternaam<input name="achternaam" autocomplete="family-name" required></label>
+          <label class="full">Straat + huisnummer<input name="straat" autocomplete="street-address" required></label>
+          <label>Postcode<input name="postcode" autocomplete="postal-code" required></label>
+          <label>Plaats<input name="plaats" autocomplete="address-level2" required></label>
+          <label>E-mailadres<input type="email" name="email" autocomplete="email" required></label>
+          <label>Telefoonnummer<input name="telefoon" autocomplete="tel" required></label>
+        </div>
+        <fieldset class="payment-methods disabled-payments">
+          <legend>Betaalmethoden</legend>
+          <label><input type="radio" disabled> <span>iDEAL <em>Binnenkort beschikbaar</em></span></label>
+        </fieldset>
+        <button class="button primary" type="submit">Bestellen via WhatsApp</button>
+        <p class="form-note">Na het klikken wordt WhatsApp geopend met een volledig ingevuld bestelbericht.</p>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer"></footer>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cms-page.js" defer></script>
+  <script src="assets/js/shop.js" defer></script>
+  <script src="assets/js/checkout.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "title": "Volg Casa del Mulino",
+  "intro": "Bekijk nieuwe batches, recepten, masterclasses en momenten achter de schermen.",
+  "url": "https://www.instagram.com/casa.del.mulino",
+  "handle": "@casa.del.mulino",
+  "items": [
+    { "image": "assets/images/instagram-limoncello-post.jpg", "caption": "Van schil tot fles." },
+    { "image": "assets/images/limoncello-citrus-still-life.jpg", "caption": "Italiaanse sfeer, Nederlands vakmanschap." }
+  ]
+}

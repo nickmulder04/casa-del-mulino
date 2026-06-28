@@ -1,0 +1,19 @@
+{
+  "links": [
+    { "label": "Home", "url": "index.html" },
+    { "label": "Over Casa del Mulino", "url": "over.html" },
+    { "label": "Ons verhaal", "url": "verhaal.html" },
+    { "label": "Producten", "url": "smaken.html" },
+    { "label": "Recepten", "url": "recepten.html" },
+    { "label": "Proeverijen & Masterclasses", "url": "proeverijen.html" },
+    { "label": "Contact", "url": "contact.html" },
+    { "label": "Veelgestelde vragen", "url": "faq.html" },
+    { "label": "Privacyverklaring", "url": "privacy.html" },
+    { "label": "Algemene voorwaarden", "url": "algemene-voorwaarden.html" },
+    { "label": "Leeftijdscontrole (18+)", "url": "leeftijdscontrole.html" },
+    { "label": "Cookiebeleid", "url": "cookiebeleid.html" },
+    { "label": "Verzendinformatie", "url": "verzendinformatie.html" },
+    { "label": "Retourbeleid", "url": "retourbeleid.html" },
+    { "label": "Instagram", "url": "https://www.instagram.com/casa.del.mulino" }
+  ]
+}
