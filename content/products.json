@@ -13,12 +13,12 @@
       "stockStatus": "Beschikbaar",
       "collection": "Huidige collectie",
       "comingSoonSize": "700 ml",
-      "image": "/images/product-limoncello.jpg",
+      "image": "images/product-limoncello.jpg",
       "gallery": [
-        "/images/product-limoncello.jpg",
-        "/images/limoncello-fles.jpg",
-        "/images/hero-limoncello-citrus-trees.jpg",
-        "/images/limoncello-citrus-still-life.jpg"
+        "images/product-limoncello.jpg",
+        "images/limoncello-fles.jpg",
+        "images/hero-limoncello-citrus-trees.jpg",
+        "images/limoncello-citrus-still-life.jpg"
       ],
       "short": "Fris, zonnig en intens citroenachtig.",
       "description": "De signatuur van Casa del Mulino: helder, fris en gemaakt voor het moment na het eten.",
@@ -57,12 +57,12 @@
       "stockStatus": "Beschikbaar",
       "collection": "Huidige collectie",
       "comingSoonSize": "700 ml",
-      "image": "/images/product-arancello.jpg",
+      "image": "images/product-arancello.jpg",
       "gallery": [
-        "/images/product-arancello.jpg",
-        "/images/arancello-fles.jpg",
-        "/images/limoncello-arancello-case.jpg",
-        "/images/product-collection-three.jpg"
+        "images/product-arancello.jpg",
+        "images/arancello-fles.jpg",
+        "images/limoncello-arancello-case.jpg",
+        "images/product-collection-three.jpg"
       ],
       "short": "Warme sinaasappeltonen met een bitterzoete finale.",
       "description": "Arancello brengt rijpe sinaasappel, mediterrane warmte en een ronde afdronk samen.",
@@ -101,12 +101,12 @@
       "stockStatus": "Beschikbaar",
       "collection": "Huidige collectie",
       "comingSoonSize": "700 ml",
-      "image": "/images/product-meloncello.jpg",
+      "image": "images/product-meloncello.jpg",
       "gallery": [
-        "/images/product-meloncello.jpg",
-        "/images/meloncello-fles.jpg",
-        "/images/product-collection-three.jpg",
-        "/images/casa-del-mulino-flessen.jpg"
+        "images/product-meloncello.jpg",
+        "images/meloncello-fles.jpg",
+        "images/product-collection-three.jpg",
+        "images/casa-del-mulino-flessen.jpg"
       ],
       "short": "Licht, rond en fruitig met zachte meloen.",
       "description": "Een vriendelijke, verrassende likeur voor lange avonden en zachte desserts.",

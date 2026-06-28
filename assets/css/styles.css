@@ -602,10 +602,86 @@ h3 {
 .accent-arancello { --accent: #cf7228; }
 .accent-meloncello { --accent: #71925a; }
 
+.static-home-collection,
+.static-home-collections {
+  position: relative;
+  background:
+    linear-gradient(rgba(255, 249, 236, .92), rgba(255, 249, 236, .96)),
+    radial-gradient(circle at 50% 0%, rgba(199, 161, 90, .16), transparent 34rem);
+}
+
+.static-home-collection .section-heading,
+.static-home-collections .section-heading {
+  opacity: 1;
+  transform: none;
+}
+
+.static-product-grid {
+  align-items: stretch;
+}
+
+.static-product-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  background: rgba(255, 251, 242, .9);
+  box-shadow: 0 24px 72px rgba(32, 21, 18, .12);
+}
+
+.static-product-card .product-media {
+  min-height: 0;
+  border-top: 5px solid var(--accent);
+  background: #f5ead7;
+}
+
+.static-product-card .product-media img {
+  display: block;
+  width: 100%;
+  height: clamp(470px, 39vw, 610px);
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  visibility: visible;
+}
+
+.static-product-card .product-info {
+  align-content: start;
+  padding: clamp(30px, 3.6vw, 48px);
+  gap: 18px;
+}
+
+.static-product-card .product-count {
+  color: var(--accent);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 800;
+}
+
+.static-product-card h3 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(2rem, 2.7vw, 3rem);
+  line-height: .98;
+}
+
+.static-product-card .product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.static-product-card .text-link,
+.static-bundle-card .text-link {
+  align-self: end;
+}
+
 .craft {
   background:
     linear-gradient(rgba(42, 21, 22, .88), rgba(42, 21, 22, .92)),
-    url("/images/limoncello-citroenboom.jpg") center/cover fixed;
+    url("../../images/limoncello-citroenboom.jpg") center/cover fixed;
   color: var(--porcelain);
 }
 .craft h2 { color: var(--porcelain); }
@@ -856,7 +932,7 @@ h3 {
   padding: 24px;
   background:
     linear-gradient(rgba(25, 52, 36, .7), rgba(42, 21, 22, .68)),
-    url("/images/casa-del-mulino-flessen.jpg") center/cover;
+    url("../../images/casa-del-mulino-flessen.jpg") center/cover;
   color: var(--porcelain);
   font-family: var(--serif);
   font-size: 1.45rem;
@@ -1214,7 +1290,7 @@ h3 {
 .handmade-section {
   background:
     linear-gradient(rgba(42, 21, 22, .88), rgba(42, 21, 22, .88)),
-    url("/images/product-collection-three.jpg") center / cover fixed;
+    url("../../images/product-collection-three.jpg") center / cover fixed;
   color: var(--porcelain);
 }
 .handmade-panel {
@@ -1264,7 +1340,7 @@ h3 {
   padding: 128px clamp(18px, 6vw, 86px) 76px;
   background:
     linear-gradient(90deg, rgba(42, 21, 22, .88), rgba(42, 21, 22, .34)),
-    url("/images/atelier-limoncello-peeler.jpg") center / cover;
+    url("../../images/atelier-limoncello-peeler.jpg") center / cover;
   color: var(--porcelain);
 }
 .process-hero .hero-inner { max-width: 760px; }
@@ -2034,7 +2110,7 @@ h3 {
 .recommended-product {
   background:
     linear-gradient(rgba(42, 21, 22, .86), rgba(42, 21, 22, .88)),
-    url("/images/product-collection-three.jpg") center / cover fixed;
+    url("../../images/product-collection-three.jpg") center / cover fixed;
   color: var(--porcelain);
 }
 .recommended-product h2 {
@@ -2220,6 +2296,56 @@ h3 {
   font-weight: 900;
   letter-spacing: .12em;
   text-transform: uppercase;
+}
+
+.static-bundle-grid {
+  max-width: 1390px;
+  gap: clamp(22px, 3vw, 38px);
+  margin-top: clamp(52px, 7vw, 86px);
+}
+
+.static-bundle-card {
+  min-height: 560px;
+  grid-template-columns: minmax(260px, .95fr) minmax(280px, 1.05fr);
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  background: rgba(255, 251, 242, .9);
+  box-shadow: 0 30px 92px rgba(32, 21, 18, .13);
+}
+
+.static-bundle-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  visibility: visible;
+}
+
+.static-bundle-card div {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  padding: clamp(38px, 4.8vw, 66px);
+}
+
+.static-bundle-card h3 {
+  max-width: 9ch;
+  font-size: clamp(3rem, 5vw, 5.25rem);
+  line-height: .93;
+}
+
+.static-bundle-card strong {
+  font-size: clamp(2.2rem, 3vw, 3rem);
+}
+
+.static-bundle-card p:not(.eyebrow) {
+  max-width: 13.5em;
+  font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+  line-height: 1.6;
 }
 .checkout-gift-options {
   display: grid;
@@ -2493,7 +2619,7 @@ h3 {
   padding: 22px;
   background:
     linear-gradient(rgba(42, 21, 22, .88), rgba(42, 21, 22, .92)),
-    url("/images/product-collection-three.jpg") center / cover;
+    url("../../images/product-collection-three.jpg") center / cover;
   animation: fadeUp .35s ease both;
 }
 .age-gate-card {
@@ -2823,6 +2949,81 @@ h3 {
   .search-results a { display: grid; }
   .breadcrumbs { padding-top: 84px; }
   .gift-card img { height: 260px; }
+}
+
+@media (max-width: 1080px) {
+  .static-product-grid {
+    grid-template-columns: 1fr;
+    max-width: 740px;
+  }
+
+  .static-product-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .static-product-card .product-media img {
+    height: min(72vw, 560px);
+    min-height: 420px;
+  }
+
+  .static-bundle-grid {
+    grid-template-columns: 1fr;
+    max-width: 820px;
+  }
+
+  .static-bundle-card {
+    grid-template-columns: .95fr 1.05fr;
+    min-height: 460px;
+  }
+
+  .static-bundle-card img {
+    min-height: 460px;
+  }
+}
+
+@media (max-width: 720px) {
+  .static-home-collection,
+  .static-home-collections {
+    padding-inline: 0;
+  }
+
+  .static-product-grid,
+  .static-bundle-grid {
+    width: min(100%, 440px);
+  }
+
+  .static-product-card .product-media img {
+    height: 430px;
+    min-height: 0;
+  }
+
+  .static-product-card .product-info {
+    padding: 28px 24px 32px;
+  }
+
+  .static-product-card h3 {
+    max-width: 11ch;
+    font-size: 2.35rem;
+  }
+
+  .static-bundle-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .static-bundle-card img {
+    height: 430px;
+    min-height: 0;
+  }
+
+  .static-bundle-card div {
+    padding: 34px 26px 38px;
+  }
+
+  .static-bundle-card h3 {
+    font-size: 3rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

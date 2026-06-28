@@ -78,7 +78,7 @@ const fallbackProducts = [
     id: "limoncello",
     name: "Casa del Mulino Limoncello",
     flavor: "Citroen",
-    image: "/images/product-limoncello.jpg",
+    image: "images/product-limoncello.jpg",
     short: "Fris, zonnig en intens citroenachtig.",
     size: "500 ml",
     alcohol: "30% vol"
@@ -87,7 +87,7 @@ const fallbackProducts = [
     id: "arancello",
     name: "Casa del Mulino Arancello",
     flavor: "Sinaasappel",
-    image: "/images/product-arancello.jpg",
+    image: "images/product-arancello.jpg",
     short: "Warme sinaasappeltonen met een bitterzoete finale.",
     size: "500 ml",
     alcohol: "30% vol"
@@ -96,7 +96,7 @@ const fallbackProducts = [
     id: "meloncello",
     name: "Casa del Mulino Meloncello",
     flavor: "Meloen",
-    image: "/images/product-meloncello.jpg",
+    image: "images/product-meloncello.jpg",
     short: "Licht, rond en fruitig met zachte meloen.",
     size: "500 ml",
     alcohol: "30% vol"
@@ -108,7 +108,7 @@ const fallbackCollections = [
     id: "duo",
     name: "Duo Collectie",
     price: 45,
-    image: "/images/limoncello-arancello-case.jpg",
+    image: "images/limoncello-arancello-case.jpg",
     description: "De perfecte combinatie om twee smaken van Casa del Mulino te ontdekken."
   },
   {
@@ -116,7 +116,7 @@ const fallbackCollections = [
     name: "Signature Collectie",
     price: 65,
     badge: "Complete Collectie",
-    image: "/images/product-collection-three.jpg",
+    image: "images/product-collection-three.jpg",
     description: "Ontdek de volledige collectie van Casa del Mulino. Drie unieke smaken, samengebracht in een exclusieve selectie."
   }
 ];
@@ -171,7 +171,7 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
 
   const productGrid = document.querySelector("#collectie .product-grid");
   const productItems = products?.products?.length ? products.products : fallbackProducts;
-  if (productGrid && productItems.length) {
+  if (productGrid && productItems.length && !productGrid.closest("[data-static-commerce='true']")) {
     productGrid.innerHTML = htmlList(productItems, (product, index) => `
       <article class="product-card product-card-large reveal accent-${product.id}">
         <a class="product-media" href="${product.id}.html" aria-label="Bekijk details van ${product.name}">
@@ -191,7 +191,7 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
 
   const bundleGrid = document.querySelector(".collection-bundle-grid");
   const collectionItems = collections?.collections?.length ? collections.collections : fallbackCollections;
-  if (bundleGrid && collectionItems.length) {
+  if (bundleGrid && collectionItems.length && !bundleGrid.closest("[data-static-commerce='true']")) {
     bundleGrid.innerHTML = htmlList(collectionItems, (collection) => `
       <article class="collection-bundle reveal">
         <img src="${cmsPath(collection.image)}" loading="lazy" alt="${collection.name}">

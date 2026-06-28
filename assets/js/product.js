@@ -1,22 +1,22 @@
 const sharedPairings = [
   {
     title: "Vanille-ijs",
-    image: "/images/limoncello-spritz-service.jpg",
+    image: "images/limoncello-spritz-service.jpg",
     note: "De romige zachtheid laat citrus en fruit extra helder naar voren komen."
   },
   {
     title: "Tiramisu",
-    image: "/images/casa-del-mulino-flessen.jpg",
+    image: "images/casa-del-mulino-flessen.jpg",
     note: "Een klein glas naast koffie, cacao en mascarpone geeft het dessert meer spanning."
   },
   {
     title: "Vers fruit",
-    image: "/images/product-collection-three.jpg",
+    image: "images/product-collection-three.jpg",
     note: "Serveer ijskoud bij aardbei, meloen of citrus voor een lichte afsluiting."
   },
   {
     title: "Pure chocolade",
-    image: "/images/product-arancello.jpg",
+    image: "images/product-arancello.jpg",
     note: "Bittere chocolade contrasteert elegant met de natuurlijke zoetheid."
   }
 ];
@@ -25,8 +25,8 @@ const products = {
   limoncello: {
     name: "Casa del Mulino Limoncello",
     short: "Fris, zonnig en intens citroenachtig.",
-    image: "/images/product-limoncello.jpg",
-    gallery: ["/images/product-limoncello.jpg", "/images/limoncello-fles.jpg", "/images/hero-limoncello-citrus-trees.jpg", "/images/limoncello-citrus-still-life.jpg"],
+    image: "images/product-limoncello.jpg",
+    gallery: ["images/product-limoncello.jpg", "images/limoncello-fles.jpg", "images/hero-limoncello-citrus-trees.jpg", "images/limoncello-citrus-still-life.jpg"],
     accent: "#d9b72f",
     alcohol: "30% vol",
     size: "500 ml",
@@ -39,14 +39,14 @@ const products = {
       ...sharedPairings,
       {
         title: "Citroentaart",
-        image: "/images/limoncello-zests-board.jpg",
+        image: "images/limoncello-zests-board.jpg",
         note: "Een toon-op-toon combinatie voor wie het frisse karakter wil versterken."
       }
     ],
     recipes: [
       {
         title: "Limoncello Spritz",
-        image: "/images/limoncello-spritz-service.jpg",
+        image: "images/limoncello-spritz-service.jpg",
         mood: "De perfecte aperitivo voor een warme zomeravond.",
         ingredients: [
           "60 ml Casa del Mulino Limoncello",
@@ -61,7 +61,7 @@ const products = {
       },
       {
         title: "Italian Corona",
-        image: "/images/product-limoncello.jpg",
+        image: "images/product-limoncello.jpg",
         mood: "Een verrassend frisse combinatie van Italiaans vakmanschap en een zomers biermoment.",
         ingredients: [
           "1 fles Corona Extra",
@@ -75,8 +75,8 @@ const products = {
   arancello: {
     name: "Casa del Mulino Arancello",
     short: "Warme sinaasappeltonen met een bitterzoete finale.",
-    image: "/images/product-arancello.jpg",
-    gallery: ["/images/product-arancello.jpg", "/images/arancello-fles.jpg", "/images/limoncello-arancello-case.jpg", "/images/product-collection-three.jpg"],
+    image: "images/product-arancello.jpg",
+    gallery: ["images/product-arancello.jpg", "images/arancello-fles.jpg", "images/limoncello-arancello-case.jpg", "images/product-collection-three.jpg"],
     accent: "#cf7228",
     alcohol: "30% vol",
     size: "500 ml",
@@ -90,8 +90,8 @@ const products = {
   meloncello: {
     name: "Casa del Mulino Meloncello",
     short: "Licht, rond en fruitig met zachte meloen.",
-    image: "/images/product-meloncello.jpg",
-    gallery: ["/images/product-meloncello.jpg", "/images/meloncello-fles.jpg", "/images/product-collection-three.jpg", "/images/casa-del-mulino-flessen.jpg"],
+    image: "images/product-meloncello.jpg",
+    gallery: ["images/product-meloncello.jpg", "images/meloncello-fles.jpg", "images/product-collection-three.jpg", "images/casa-del-mulino-flessen.jpg"],
     accent: "#71925a",
     alcohol: "30% vol",
     size: "500 ml",

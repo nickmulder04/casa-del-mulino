@@ -19,11 +19,11 @@
     "active": true,
     "title": "Limoncello del Mulino",
     "file": "assets/audio/limoncello-del-mulino.mp3",
-    "cover": "/images/casa-del-mulino-official-logo.jpg"
+    "cover": "images/casa-del-mulino-official-logo.jpg"
   },
   "seo": {
     "defaultTitle": "Casa del Mulino | Ambachtelijke Italiaanse likeur uit Nederland",
     "defaultDescription": "Casa del Mulino maakt ambachtelijke limoncello, arancello en meloncello in kleine batches. Italiaanse traditie, Nederlands vakmanschap.",
-    "ogImage": "/images/casa-del-mulino-official-logo.jpg"
+    "ogImage": "images/casa-del-mulino-official-logo.jpg"
   }
 }

@@ -3,7 +3,7 @@ const recipeFallback = window.CDM_RECIPES || [
     title: "Limoncello Spritz",
     slug: "limoncello-spritz",
     summary: "Een frisse Italiaanse klassieker met Casa del Mulino Limoncello.",
-    image: "/images/limoncello-spritz-service.jpg",
+    image: "images/limoncello-spritz-service.jpg",
     flavor: "Limoncello",
     categories: ["Cocktails", "Borrel", "Limoncello"],
     time: "5 minuten",
