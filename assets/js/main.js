@@ -5,6 +5,15 @@ const reveals = document.querySelectorAll(".reveal");
 const lightbox = document.querySelector("[data-lightbox-modal]");
 const loader = document.querySelector("[data-loader]");
 const parallaxItems = document.querySelectorAll("[data-parallax]");
+const imageFallback = "/images/casa-del-mulino-official-logo.jpg";
+
+document.addEventListener("error", (event) => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement) || image.dataset.fallbackApplied === "true") return;
+  image.dataset.fallbackApplied = "true";
+  image.classList.add("image-fallback");
+  image.src = imageFallback;
+}, true);
 
 window.addEventListener("load", () => {
   if (loader) {

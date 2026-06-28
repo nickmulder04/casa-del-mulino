@@ -42,7 +42,7 @@ const applyHero = (content) => {
   const heroData = content.hero || content;
 
   if (eyebrow && (heroData.eyebrow || content.title)) eyebrow.textContent = heroData.eyebrow || content.title;
-  if (title && (heroData.title || content.heroTitle)) title.textContent = heroData.title || content.heroTitle;
+  if (title && (heroData.heroTitle || content.heroTitle || heroData.title)) title.textContent = heroData.heroTitle || content.heroTitle || heroData.title;
   if (text && (heroData.subtitle || content.heroText || content.intro)) text.textContent = heroData.subtitle || content.heroText || content.intro;
   if (image && (heroData.image || content.heroImage || content.image)) {
     image.src = cmsPath(heroData.image || content.heroImage || content.image);
@@ -72,6 +72,12 @@ const applyContactContent = (contact) => {
 };
 
 const htmlList = (items = [], mapper) => items.map(mapper).join("");
+
+const revealRenderedContent = (root = document) => {
+  root.querySelectorAll(".reveal:not(.in-view)").forEach((element) => {
+    element.classList.add("in-view");
+  });
+};
 
 const applyHomeContent = ({ home, products, collections, instagram, contact }) => {
   if (pageKey() !== "home") return;
@@ -131,6 +137,7 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
         </div>
       </article>
     `);
+    revealRenderedContent(productGrid);
   }
 
   const bundleGrid = document.querySelector(".collection-bundle-grid");
@@ -148,6 +155,7 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
         </div>
       </article>
     `);
+    revealRenderedContent(bundleGrid);
   }
 
   const instagramSection = document.querySelector("#instagram");
@@ -158,6 +166,7 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
     if (instagramGrid) {
       instagramGrid.href = instagram.url || instagramGrid.href;
       instagramGrid.innerHTML = htmlList(instagram.items || [], (item) => `<img src="${cmsPath(item.image)}" loading="lazy" alt="${item.caption || instagram.title}">`);
+      revealRenderedContent(instagramGrid);
     }
   }
 
@@ -197,6 +206,22 @@ const applyLegalContent = (legalContent) => {
   `;
 };
 
+const applyStoryContent = (story) => {
+  if (pageKey() !== "story" || !story?.sections?.length) return;
+  const target = document.querySelector(".story-longform .text-page");
+  if (!target) return;
+  target.innerHTML = htmlList(story.sections, (section) => {
+    const paragraphs = section.paragraphs || (section.text ? [section.text] : []);
+    return `
+      <section class="cms-text-block">
+        ${section.title ? `<h2>${section.title}</h2>` : ""}
+        ${paragraphs.map((paragraph) => paragraph.startsWith("\"") ? `<blockquote>${paragraph}</blockquote>` : `<p>${paragraph}</p>`).join("")}
+      </section>
+    `;
+  });
+  revealRenderedContent(target);
+};
+
 const applyExperienceContent = ({ masterclasses, tastings }) => {
   const key = pageKey();
   const content = key === "masterclass" ? masterclasses : key === "proeverijen" ? tastings : null;
@@ -218,6 +243,7 @@ const applyExperienceContent = ({ masterclasses, tastings }) => {
   const grid = document.querySelector(".experience-grid");
   if (grid && content.cards?.length) {
     grid.innerHTML = htmlList(content.cards, (card) => `<article><h3>${card.title}</h3><p>${card.text}</p></article>`);
+    revealRenderedContent(grid);
   }
 };
 
@@ -248,6 +274,7 @@ const applyGenericPageContent = (pagesContent) => {
       ${block.image ? `<img src="${cmsPath(block.image)}" loading="lazy" alt="${block.heading || page.title}">` : ""}
     </section>
   `);
+  revealRenderedContent(target);
 };
 
 const loadPageContent = async () => {
@@ -282,9 +309,11 @@ const loadPageContent = async () => {
   applySeo(content, seo);
   applyContactContent(contact);
   applyHomeContent({ home, products, collections, instagram, contact });
+  applyStoryContent(story);
   applyLegalContent(content);
   applyExperienceContent({ masterclasses, tastings });
   applyGenericPageContent(pages);
+  revealRenderedContent();
 };
 
 loadPageContent();

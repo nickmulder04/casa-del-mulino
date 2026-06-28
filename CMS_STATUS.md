@@ -10,7 +10,7 @@ Laatste update: 2026-06-28
 - `cellodelmulino.nl` vastgelegd als doorverwijsdomein in content/settings en Netlify redirect.
 - Generieke CMS-overridescript toegevoegd (`assets/js/cms-page.js`) voor basis-hero/SEO/contact/legal content.
 - Homepagina, juridische pagina's, Instagram-sectie en masterclass/proeverij-pagina's worden runtime uit CMS JSON opgebouwd waar de bestaande DOM-structuur dit ondersteunt.
-- Uploads via CMS gaan naar `assets/uploads`.
+- Uploads via CMS gaan naar `public/images` en zijn bereikbaar via `/images/...`.
 - CMS-contentbestanden aangemaakt voor:
   - instellingen
   - producten

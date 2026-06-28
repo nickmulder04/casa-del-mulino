@@ -20,13 +20,13 @@ const template = (recipe) => `<!doctype html>
   <link rel="canonical" href="https://casadelmulino.nl/recepten/${escapeHtml(recipe.slug)}.html">
   <meta property="og:title" content="${escapeHtml(recipe.seoTitle || recipe.title)}">
   <meta property="og:description" content="${escapeHtml(recipe.seoDescription || recipe.summary)}">
-  <meta property="og:image" content="../${escapeHtml(recipe.image)}">
+  <meta property="og:image" content="${escapeHtml(recipe.image)}">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body data-recipe="${escapeHtml(recipe.slug)}">
-  <header class="site-header solid"><a class="brand" href="../index.html"><img src="../assets/images/casa-del-mulino-official-logo.jpg" alt="" class="brand-logo"><span><strong>Casa del Mulino</strong><small>Fatto a Mano</small></span></a><nav class="main-nav visible"><a href="../recepten.html">Recepten</a><a href="../smaken.html">Smaken</a><a href="../bestellen.html">Bestellen</a></nav></header>
+  <header class="site-header solid"><a class="brand" href="../index.html"><img src="/images/casa-del-mulino-official-logo.jpg" alt="" class="brand-logo"><span><strong>Casa del Mulino</strong><small>Fatto a Mano</small></span></a><nav class="main-nav visible"><a href="../recepten.html">Recepten</a><a href="../smaken.html">Smaken</a><a href="../bestellen.html">Bestellen</a></nav></header>
   <main data-recipe-detail></main>
   <footer class="site-footer"></footer>
   <script src="../assets/js/main.js" defer></script>

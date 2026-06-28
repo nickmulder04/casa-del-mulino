@@ -4,11 +4,11 @@ backend:
 
 local_backend: true
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "public/images"
+public_folder: "/images"
 site_url: "https://casadelmulino.nl"
 display_url: "https://casadelmulino.nl"
-logo_url: "/assets/images/casa-del-mulino-official-logo.jpg"
+logo_url: "/images/casa-del-mulino-official-logo.jpg"
 locale: "nl"
 
 collections:

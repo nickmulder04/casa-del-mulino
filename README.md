@@ -17,7 +17,7 @@ Gebruik geen Netlify Drop deployments meer. Alle wijzigingen horen via GitHub na
 - HTML, CSS en JavaScript zonder framework.
 - Decap CMS voor contentbeheer via Git.
 - Content staat in `content/*.json`.
-- Uploads uit het CMS komen in `assets/uploads`.
+- Uploads uit het CMS komen in `public/images` en zijn publiek bereikbaar via `/images/...`.
 - De site heeft fallback-content in de code, zodat ontbrekende CMS-content geen kapotte pagina's veroorzaakt.
 
 ## Lokaal starten
@@ -103,7 +103,7 @@ Voor toegang:
 4. Nodig jezelf uit als beheerder.
 5. Log in via `/admin/`.
 
-Alle uploads uit het CMS worden opgeslagen in `assets/uploads`.
+Alle uploads uit het CMS worden opgeslagen in `public/images` en zijn publiek bereikbaar via `/images/...`.
 
 ## GitHub
 

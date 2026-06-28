@@ -79,5 +79,5 @@ Koppel in Netlify:
 - `https://casadelmulino.nl/admin/`
 - `https://cellodelmulino.nl` redirect naar hoofddomein
 - Producten laden uit `content/products.json`
-- CMS uploads komen in `assets/uploads`
+- CMS uploads komen in `public/images` en zijn bereikbaar via `/images/...`
 - `sitemap.xml` bevat `https://casadelmulino.nl`

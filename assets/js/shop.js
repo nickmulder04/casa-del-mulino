@@ -7,32 +7,32 @@ let FREE_SHIPPING_FROM = 75;
 const shopProducts = {
   limoncello: {
     name: "Casa del Mulino Limoncello",
-    image: "assets/images/product-limoncello.jpg",
+    image: "/images/product-limoncello.jpg",
     size: "500 ml",
     price: 24.95
   },
   arancello: {
     name: "Casa del Mulino Arancello",
-    image: "assets/images/product-arancello.jpg",
+    image: "/images/product-arancello.jpg",
     size: "500 ml",
     price: 24.95
   },
   meloncello: {
     name: "Casa del Mulino Meloncello",
-    image: "assets/images/product-meloncello.jpg",
+    image: "/images/product-meloncello.jpg",
     size: "500 ml",
     price: 24.95
   },
   duo: {
     name: "Duo Collectie",
-    image: "assets/images/limoncello-arancello-case.jpg",
+    image: "/images/limoncello-arancello-case.jpg",
     size: "2 x 500 ml",
     price: 45,
     bundle: ["Kies zelf twee flessen", "Limoncello + Arancello", "Limoncello + Meloncello", "Arancello + Meloncello"]
   },
   signature: {
     name: "Signature Collectie",
-    image: "assets/images/product-collection-three.jpg",
+    image: "/images/product-collection-three.jpg",
     size: "3 x 500 ml",
     price: 65,
     bundle: ["Casa del Mulino Limoncello", "Casa del Mulino Arancello", "Casa del Mulino Meloncello"],
@@ -44,7 +44,7 @@ const playlist = [
   {
     title: "Limoncello del Mulino",
     src: "assets/audio/limoncello-del-mulino.mp3",
-    cover: "assets/images/casa-del-mulino-official-logo.jpg"
+    cover: "/images/casa-del-mulino-official-logo.jpg"
   }
 ];
 
@@ -382,7 +382,7 @@ const enhanceFooter = () => {
     footer.innerHTML = `
       <div class="footer-intro">
         <div class="brand footer-brand">
-          <img src="${fromSite("assets/images/casa-del-mulino-official-logo.jpg")}" alt="" class="brand-logo">
+          <img src="${fromSite("/images/casa-del-mulino-official-logo.jpg")}" alt="" class="brand-logo">
           <span><strong>Casa del Mulino</strong><small>Fatto a Mano</small></span>
         </div>
         <p>Italiaanse traditie ontmoet Nederlands vakmanschap. Kleine batches, met de hand gemaakt in Nederland.</p>
@@ -547,7 +547,7 @@ const injectAgeGate = () => {
   document.body.insertAdjacentHTML("beforeend", `
     <section class="age-gate" data-age-gate role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
       <div class="age-gate-card">
-        <img src="${fromSite("assets/images/casa-del-mulino-official-logo.jpg")}" alt="" class="age-gate-logo">
+        <img src="${fromSite("/images/casa-del-mulino-official-logo.jpg")}" alt="" class="age-gate-logo">
         <p class="eyebrow">Leeftijdscontrole</p>
         <h2 id="age-gate-title">Welkom bij Casa del Mulino</h2>
         <p>Casa del Mulino verkoopt uitsluitend alcoholhoudende producten aan personen van 18 jaar en ouder. Door verder te gaan bevestig je dat je minimaal 18 jaar oud bent.</p>
@@ -591,7 +591,7 @@ const enhanceSeo = () => {
       "@type": "Organization",
       name: "Casa del Mulino",
       url: "https://casadelmulino.nl",
-      logo: "https://casadelmulino.nl/assets/images/casa-del-mulino-official-logo.jpg",
+      logo: "https://casadelmulino.nl/images/casa-del-mulino-official-logo.jpg",
       sameAs: ["https://www.instagram.com/casa.del.mulino"]
     });
     document.head.appendChild(schema);

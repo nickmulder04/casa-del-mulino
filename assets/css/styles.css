@@ -59,6 +59,11 @@ body::after {
 }
 
 img { display: block; max-width: 100%; }
+.image-fallback {
+  object-fit: contain !important;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  background: linear-gradient(135deg, rgba(248, 241, 226, .94), rgba(230, 211, 169, .34));
+}
 a { color: inherit; text-decoration: none; }
 button, input, textarea { font: inherit; }
 
@@ -600,7 +605,7 @@ h3 {
 .craft {
   background:
     linear-gradient(rgba(42, 21, 22, .88), rgba(42, 21, 22, .92)),
-    url("../images/limoncello-citroenboom.jpg") center/cover fixed;
+    url("/images/limoncello-citroenboom.jpg") center/cover fixed;
   color: var(--porcelain);
 }
 .craft h2 { color: var(--porcelain); }
@@ -851,7 +856,7 @@ h3 {
   padding: 24px;
   background:
     linear-gradient(rgba(25, 52, 36, .7), rgba(42, 21, 22, .68)),
-    url("../images/casa-del-mulino-flessen.jpg") center/cover;
+    url("/images/casa-del-mulino-flessen.jpg") center/cover;
   color: var(--porcelain);
   font-family: var(--serif);
   font-size: 1.45rem;
@@ -1209,7 +1214,7 @@ h3 {
 .handmade-section {
   background:
     linear-gradient(rgba(42, 21, 22, .88), rgba(42, 21, 22, .88)),
-    url("../images/product-collection-three.jpg") center / cover fixed;
+    url("/images/product-collection-three.jpg") center / cover fixed;
   color: var(--porcelain);
 }
 .handmade-panel {
@@ -1259,7 +1264,7 @@ h3 {
   padding: 128px clamp(18px, 6vw, 86px) 76px;
   background:
     linear-gradient(90deg, rgba(42, 21, 22, .88), rgba(42, 21, 22, .34)),
-    url("../images/atelier-limoncello-peeler.jpg") center / cover;
+    url("/images/atelier-limoncello-peeler.jpg") center / cover;
   color: var(--porcelain);
 }
 .process-hero .hero-inner { max-width: 760px; }
@@ -2029,7 +2034,7 @@ h3 {
 .recommended-product {
   background:
     linear-gradient(rgba(42, 21, 22, .86), rgba(42, 21, 22, .88)),
-    url("../images/product-collection-three.jpg") center / cover fixed;
+    url("/images/product-collection-three.jpg") center / cover fixed;
   color: var(--porcelain);
 }
 .recommended-product h2 {
@@ -2488,7 +2493,7 @@ h3 {
   padding: 22px;
   background:
     linear-gradient(rgba(42, 21, 22, .88), rgba(42, 21, 22, .92)),
-    url("../images/product-collection-three.jpg") center / cover;
+    url("/images/product-collection-three.jpg") center / cover;
   animation: fadeUp .35s ease both;
 }
 .age-gate-card {
