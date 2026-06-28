@@ -2607,6 +2607,44 @@ h3 {
   transform: translateY(0);
 }
 
+/* Critical homepage commerce content must remain visible even if a scroll
+   observer or CMS script is delayed by the hosting environment. */
+#collectie .product-grid,
+.exclusive-collections .collection-bundle-grid {
+  display: grid;
+  overflow: visible;
+}
+
+#collectie .product-card,
+.exclusive-collections .collection-bundle {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  z-index: 1;
+}
+
+#collectie .product-card.reveal,
+.exclusive-collections .collection-bundle.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+#collectie .product-media,
+#collectie .product-media img,
+.exclusive-collections .collection-bundle img {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#collectie .product-media {
+  min-height: 320px;
+}
+
+#collectie .product-media img {
+  min-height: 320px;
+}
+
 @media (max-width: 1080px) {
   .product-grid { grid-template-columns: 1fr; max-width: 720px; }
   .product-card { display: grid; grid-template-columns: .9fr 1fr; }

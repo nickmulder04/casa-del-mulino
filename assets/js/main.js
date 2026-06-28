@@ -7,6 +7,13 @@ const loader = document.querySelector("[data-loader]");
 const parallaxItems = document.querySelectorAll("[data-parallax]");
 const imageFallback = "/images/casa-del-mulino-official-logo.jpg";
 
+const revealCriticalHomepageCards = () => {
+  document.querySelectorAll("#collectie .product-card, .exclusive-collections .collection-bundle").forEach((card) => {
+    card.classList.add("in-view");
+    card.style.visibility = "visible";
+  });
+};
+
 document.addEventListener("error", (event) => {
   const image = event.target;
   if (!(image instanceof HTMLImageElement) || image.dataset.fallbackApplied === "true") return;
@@ -19,6 +26,7 @@ window.addEventListener("load", () => {
   if (loader) {
     window.setTimeout(() => loader.classList.add("is-hidden"), 350);
   }
+  revealCriticalHomepageCards();
 });
 
 if (header) {
@@ -53,6 +61,8 @@ if ("IntersectionObserver" in window) {
 } else {
   reveals.forEach((el) => el.classList.add("in-view"));
 }
+
+revealCriticalHomepageCards();
 
 let ticking = false;
 const updateParallax = () => {
