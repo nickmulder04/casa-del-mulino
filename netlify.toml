@@ -52,9 +52,41 @@
   force = true
 
 [[redirects]]
+  from = "https://www.casadelmulino.nl/*"
+  to = "https://casadelmulino.nl/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.casadelmulino.nl/*"
+  to = "https://casadelmulino.nl/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 301
+
+[[redirects]]
   from = "/collectie"
   to = "/index.html#collectie"
   status = 301
+
+[[redirects]]
+  from = "/ons-verhaal"
+  to = "/ons-verhaal.html"
+  status = 200
+
+[[redirects]]
+  from = "/onze-belofte"
+  to = "/onze-belofte.html"
+  status = 200
+
+[[redirects]]
+  from = "/serveren"
+  to = "/serveren.html"
+  status = 200
 
 [[redirects]]
   from = "/*"

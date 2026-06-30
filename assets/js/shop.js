@@ -1,42 +1,64 @@
-const SITE_BASE = new URL("../../", document.currentScript?.src || window.location.href).href;
+﻿const SITE_BASE = new URL("../../", document.currentScript?.src || window.location.href).href;
 const fromSite = (path) => new URL(path.replace(/^\/+/, ""), SITE_BASE).href;
+const identityHashPattern = /(?:invite_token|confirmation_token|recovery_token|access_token|error)=/;
+
+if (!location.pathname.startsWith("/admin") && location.hash && identityHashPattern.test(location.hash)) {
+  location.replace(`${fromSite("admin/")}${location.hash}`);
+}
 
 let SHIPPING_COST = 6.95;
 let FREE_SHIPPING_FROM = 75;
+const SINGLE_BOTTLE_PRICE = 24.95;
+const DUO_COLLECTION_PRICE = 47.50;
+const SIGNATURE_COLLECTION_PRICE = 69.95;
 
 const shopProducts = {
   limoncello: {
     name: "Casa del Mulino Limoncello",
-    image: "images/product-limoncello.jpg",
+    image: "/images/product-limoncello.jpg",
     size: "500 ml",
-    price: 24.95
+    price: SINGLE_BOTTLE_PRICE,
+    bottles: 1
   },
   arancello: {
     name: "Casa del Mulino Arancello",
-    image: "images/product-arancello.jpg",
+    image: "/images/product-arancello.jpg",
     size: "500 ml",
-    price: 24.95
+    price: SINGLE_BOTTLE_PRICE,
+    bottles: 1
   },
   meloncello: {
     name: "Casa del Mulino Meloncello",
-    image: "images/product-meloncello.jpg",
+    image: "/images/product-meloncello.jpg",
     size: "500 ml",
-    price: 24.95
+    price: SINGLE_BOTTLE_PRICE,
+    bottles: 1
   },
   duo: {
     name: "Duo Collectie",
-    image: "images/limoncello-arancello-case.jpg",
+    image: "/images/limoncello-arancello-case.jpg",
     size: "2 x 500 ml",
-    price: 45,
-    bundle: ["Kies zelf twee flessen", "Limoncello + Arancello", "Limoncello + Meloncello", "Arancello + Meloncello"]
+    price: DUO_COLLECTION_PRICE,
+    bottles: 2,
+    bundle: ["Casa del Mulino Limoncello", "Casa del Mulino Arancello"]
   },
   signature: {
     name: "Signature Collectie",
-    image: "images/product-collection-three.jpg",
+    image: "/images/product-collection-three.jpg",
     size: "3 x 500 ml",
-    price: 65,
+    price: SIGNATURE_COLLECTION_PRICE,
+    bottles: 3,
     bundle: ["Casa del Mulino Limoncello", "Casa del Mulino Arancello", "Casa del Mulino Meloncello"],
     badge: "Complete Collectie"
+  },
+  mixmatch: {
+    name: "Mix & Match Collectie",
+    image: "/images/casa-del-mulino-flessen.jpg",
+    size: "2 of 3 x 500 ml",
+    price: DUO_COLLECTION_PRICE,
+    bottles: 2,
+    bundle: ["Kies zelf uw favoriete smaken", "2 flessen voor €47,50", "3 flessen voor €69,95"],
+    badge: "Create Your Collection"
   }
 };
 
@@ -44,7 +66,7 @@ const playlist = [
   {
     title: "Limoncello del Mulino",
     src: "assets/audio/limoncello-del-mulino.mp3",
-    cover: "images/casa-del-mulino-official-logo.jpg"
+    cover: "/images/casa-del-mulino-official-logo.jpg"
   }
 ];
 
@@ -108,6 +130,7 @@ const applyCmsContent = async () => {
       image: publicAssetPath(collection.image) || shopProducts[collection.id]?.image,
       size: collection.size || shopProducts[collection.id]?.size,
       price: Number(collection.price ?? shopProducts[collection.id]?.price ?? 0),
+      bottles: Number(collection.bottles ?? shopProducts[collection.id]?.bottles ?? 1),
       bundle: collection.bundle || shopProducts[collection.id]?.bundle,
       badge: collection.badge || shopProducts[collection.id]?.badge
     };
@@ -124,7 +147,50 @@ const setCart = (cart) => localStorage.setItem("cdm-cart", JSON.stringify(cart))
 const getFavorites = () => JSON.parse(localStorage.getItem("cdm-favorites") || "[]");
 const setFavorites = (items) => localStorage.setItem("cdm-favorites", JSON.stringify(items));
 
-const cartSubtotal = (cart) => cart.reduce((sum, item) => sum + (shopProducts[item.key]?.price || 0) * item.quantity, 0);
+const countCartBottles = (cart) => cart.reduce((sum, item) => {
+  const product = shopProducts[item.key];
+  return sum + (product?.bottles || 1) * item.quantity;
+}, 0);
+
+const bestBundlePricing = (bottleCount) => {
+  const offers = [
+    { key: "single", label: "Losse fles", bottles: 1, price: SINGLE_BOTTLE_PRICE },
+    { key: "duo", label: "Duo Collection", bottles: 2, price: DUO_COLLECTION_PRICE },
+    { key: "signature", label: "Signature Collection", bottles: 3, price: SIGNATURE_COLLECTION_PRICE }
+  ];
+  const best = Array.from({ length: bottleCount + 1 }, () => ({ total: Infinity, offers: [] }));
+  best[0] = { total: 0, offers: [] };
+
+  for (let count = 1; count <= bottleCount; count += 1) {
+    offers.forEach((offer) => {
+      if (count >= offer.bottles && best[count - offer.bottles].total + offer.price < best[count].total) {
+        best[count] = {
+          total: best[count - offer.bottles].total + offer.price,
+          offers: [...best[count - offer.bottles].offers, offer]
+        };
+      }
+    });
+  }
+
+  const applied = best[bottleCount].offers.reduce((items, offer) => {
+    items[offer.key] = items[offer.key] || { ...offer, quantity: 0 };
+    items[offer.key].quantity += 1;
+    return items;
+  }, {});
+
+  const originalTotal = bottleCount * SINGLE_BOTTLE_PRICE;
+  const subtotal = Number((best[bottleCount].total || 0).toFixed(2));
+  return {
+    bottleCount,
+    originalTotal,
+    subtotal,
+    saving: Math.max(0, Number((originalTotal - subtotal).toFixed(2))),
+    appliedBundles: Object.values(applied)
+  };
+};
+
+const cartPricing = (cart) => bestBundlePricing(countCartBottles(cart));
+const cartSubtotal = (cart) => cartPricing(cart).subtotal;
 const shippingFor = (subtotal) => subtotal > 0 && subtotal < FREE_SHIPPING_FROM ? SHIPPING_COST : 0;
 const shippingMessage = (subtotal) => {
   if (subtotal >= FREE_SHIPPING_FROM) return "Gefeliciteerd! Je bestelling wordt gratis verzonden.";
@@ -161,7 +227,8 @@ const closeCart = () => document.querySelector("[data-cart-drawer]")?.classList.
 const renderCart = () => {
   const cart = getCart();
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = cartSubtotal(cart);
+  const pricing = cartPricing(cart);
+  const subtotal = pricing.subtotal;
   const shipping = shippingFor(subtotal);
   const progress = Math.min(100, Math.round((subtotal / FREE_SHIPPING_FROM) * 100));
 
@@ -198,6 +265,15 @@ const renderCart = () => {
         </div>
       </article>`;
   }).join("") : "<p class=\"cart-empty\">Uw winkelwagen is nog leeg.</p>";
+  if (cart.length && pricing.appliedBundles.length) {
+    body.insertAdjacentHTML("beforeend", `
+      <div class="cart-bundle-summary">
+        <p class="eyebrow">Automatisch bundelvoordeel</p>
+        <ul>${pricing.appliedBundles.map((bundle) => `<li>${bundle.quantity}x ${bundle.label}</li>`).join("")}</ul>
+        ${pricing.saving > 0 ? `<p><span>Losse flessen</span><s>${currency(pricing.originalTotal)}</s></p><p><span>U bespaart</span><strong>${currency(pricing.saving)}</strong></p>` : ""}
+      </div>
+    `);
+  }
   subtotalEl.textContent = currency(subtotal);
   shippingEl.textContent = shipping ? currency(shipping) : "Gratis";
   totalEl.textContent = currency(subtotal + shipping);
@@ -221,13 +297,13 @@ const injectCart = () => {
       <div class="cart-items" data-cart-items></div>
       <div class="shipping-box">
         <span class="shipping-icon" aria-hidden="true"></span>
-        <p data-shipping-message>Gratis verzending vanaf €75,00.</p>
+        <p data-shipping-message>Gratis verzending vanaf &euro;75,00.</p>
         <div class="shipping-track"><i data-shipping-progress></i></div>
-        <small>Nederland: €6,95 verzendkosten</small>
+        <small>Nederland: &euro;6,95 verzendkosten</small>
       </div>
-      <div class="cart-total"><span>Subtotaal</span><strong data-cart-subtotal>€0,00</strong></div>
-      <div class="cart-total muted"><span>Verzending</span><strong data-cart-shipping>€0,00</strong></div>
-      <div class="cart-total grand"><span>Totaal</span><strong data-cart-total>€0,00</strong></div>
+      <div class="cart-total"><span>Subtotaal</span><strong data-cart-subtotal>&euro;0,00</strong></div>
+      <div class="cart-total muted"><span>Verzending</span><strong data-cart-shipping>&euro;0,00</strong></div>
+      <div class="cart-total grand"><span>Totaal</span><strong data-cart-total>&euro;0,00</strong></div>
       <button class="button secondary dark" type="button" data-cart-close>Verder winkelen</button>
       <a class="button primary" href="checkout.html">Afrekenen</a>
       <p class="cart-note">Deze webshop is een demonstratie. Er wordt niets afgerekend.</p>
@@ -265,7 +341,7 @@ const injectMusicPlayer = () => {
         <span>Italiaanse sfeer</span>
       </button>
       <section class="music-player" data-music-player aria-label="Muziekspeler">
-        <button class="music-minimize" type="button" data-music-minimize aria-label="Minimaliseer muziekspeler">×</button>
+        <button class="music-minimize" type="button" data-music-minimize aria-label="Minimaliseer muziekspeler">&times;</button>
         <img src="${track.cover}" alt="" class="music-cover">
         <div class="music-main">
           <p class="eyebrow">Soundtrack</p>
@@ -297,6 +373,7 @@ const injectMusicPlayer = () => {
   volume.value = String(savedVolume);
   const mobileDefault = window.matchMedia("(max-width: 620px)").matches;
   const minimized = sessionStorage.getItem("cdm-audio-minimized");
+  if (mobileDefault || minimized === "true") shell.classList.add("is-minimized");
   if (sessionStorage.getItem("cdm-audio-enabled") === "true" && minimized !== "true" && !mobileDefault) player.classList.add("open");
 
   const fmt = (seconds) => {
@@ -312,6 +389,7 @@ const injectMusicPlayer = () => {
     sessionStorage.setItem("cdm-audio-time", String(audio.currentTime));
   };
   const togglePlayback = async () => {
+    shell.classList.remove("is-minimized");
     player.classList.add("open");
     sessionStorage.setItem("cdm-audio-minimized", "false");
     sessionStorage.setItem("cdm-audio-enabled", "true");
@@ -329,6 +407,7 @@ const injectMusicPlayer = () => {
   toggle.addEventListener("click", togglePlayback);
   minimize.addEventListener("click", () => {
     player.classList.remove("open");
+    shell.classList.add("is-minimized");
     sessionStorage.setItem("cdm-audio-minimized", "true");
   });
   play.addEventListener("click", togglePlayback);
@@ -364,8 +443,10 @@ const enhanceFooter = () => {
       : [
         { label: "Home", url: "index.html" },
         { label: "Over Casa del Mulino", url: "over.html" },
-        { label: "Ons verhaal", url: "verhaal.html" },
+        { label: "Ons verhaal", url: "ons-verhaal.html" },
+        { label: "Onze belofte", url: "onze-belofte.html" },
         { label: "Producten", url: "smaken.html" },
+        { label: "Serveren", url: "serveren.html" },
         { label: "Recepten", url: "recepten.html" },
         { label: "Proeverijen & Masterclasses", url: "proeverijen.html" },
         { label: "Contact", url: "contact.html" },
@@ -382,7 +463,7 @@ const enhanceFooter = () => {
     footer.innerHTML = `
       <div class="footer-intro">
         <div class="brand footer-brand">
-          <img src="${fromSite("images/casa-del-mulino-official-logo.jpg")}" alt="" class="brand-logo">
+          <img src="${fromSite("/images/casa-del-mulino-official-logo.jpg")}" alt="" class="brand-logo">
           <span><strong>Casa del Mulino</strong><small>Fatto a Mano</small></span>
         </div>
         <p>Italiaanse traditie ontmoet Nederlands vakmanschap. Kleine batches, met de hand gemaakt in Nederland.</p>
@@ -406,7 +487,7 @@ const enhanceFooter = () => {
         <a href="https://wa.me/31636188895">06-36188895</a><br>
         <a href="https://www.instagram.com/casa.del.mulino" target="_blank" rel="noopener">@casa.del.mulino</a>
       </address>
-      <p class="footer-bottom">© 2026 Casa del Mulino - Italiaanse traditie. Nederlands vakmanschap. Fatto a Mano - Handgemaakt in Nederland.</p>
+      <p class="footer-bottom">&copy; 2026 Casa del Mulino - Italiaanse traditie. Nederlands vakmanschap. Fatto a Mano - Handgemaakt in Nederland.</p>
     `;
   });
 };
@@ -448,6 +529,9 @@ const pageCatalog = [
   { title: "Limoncello", url: "limoncello.html", keywords: "citroen limoncello smaken product" },
   { title: "Arancello", url: "arancello.html", keywords: "sinaasappel arancello smaken product" },
   { title: "Meloncello", url: "meloncello.html", keywords: "meloen meloncello smaken product" },
+  { title: "Ons Verhaal", url: "ons-verhaal.html", keywords: "mulder mulino verhaal molen italiaanse inspiratie" },
+  { title: "Onze Belofte", url: "onze-belofte.html", keywords: "belofte aandacht eerlijk leren zorg handgemaakt" },
+  { title: "Serveren", url: "serveren.html", keywords: "serveren ijskoud spritz dessert cocktail serveertips" },
   { title: "Recepten", url: "recepten.html", keywords: "cocktail spritz tonic dessert recepten" },
   { title: "FAQ", url: "faq.html", keywords: "vragen bewaren troebel houdbaarheid verzending cadeau" },
   { title: "Ambacht", url: "ambacht.html", keywords: "handgemaakt ambacht schillen trekken bottelen" },
@@ -458,6 +542,9 @@ const pageCatalog = [
 
 const pageLabels = {
   "index.html": "Home",
+  "ons-verhaal.html": "Ons Verhaal",
+  "onze-belofte.html": "Onze Belofte",
+  "serveren.html": "Serveren",
   "limoncello.html": "Limoncello",
   "arancello.html": "Arancello",
   "meloncello.html": "Meloncello",
@@ -473,6 +560,62 @@ const pageLabels = {
   "proeverijen.html": "Proeverijen",
   "citroen-tot-fles.html": "Van citroen tot fles",
   "achter-de-schermen.html": "Achter de schermen"
+};
+
+const primaryNavLinks = [
+  { label: "Home", url: "index.html" },
+  { label: "Ons Verhaal", url: "ons-verhaal.html" },
+  { label: "Smaken", url: "smaken.html" },
+  { label: "Serveren", url: "serveren.html" },
+  { label: "Recepten", url: "recepten.html" },
+  { label: "Bestellen", url: "bestellen.html" },
+  { label: "Contact", url: "contact.html" }
+];
+
+const enhanceMobileNavigation = () => {
+  document.querySelectorAll(".site-header").forEach((header, index) => {
+    let nav = header.querySelector(".main-nav");
+    if (!nav) {
+      nav = document.createElement("nav");
+      nav.className = "main-nav";
+      nav.setAttribute("aria-label", "Hoofdnavigatie");
+      nav.innerHTML = primaryNavLinks.map((link) => `<a href="${fromSite(link.url)}">${link.label}</a>`).join("");
+      header.appendChild(nav);
+    }
+
+    nav.classList.remove("visible");
+    nav.dataset.mobileNav = "true";
+    const currentFile = location.pathname.split("/").pop() || "index.html";
+    nav.querySelectorAll("a").forEach((link) => {
+      const href = link.getAttribute("href") || "";
+      const linkFile = href.split("#")[0].split("/").pop() || "index.html";
+      if (linkFile === currentFile) link.setAttribute("aria-current", "page");
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        header.classList.remove("menu-open");
+        document.body.classList.remove("mobile-menu-open");
+        header.querySelector("[data-mobile-nav-toggle]")?.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    if (header.querySelector("[data-mobile-nav-toggle]")) return;
+    const button = document.createElement("button");
+    button.className = "nav-toggle mobile-nav-toggle";
+    button.type = "button";
+    button.dataset.mobileNavToggle = "true";
+    button.setAttribute("aria-label", "Menu openen");
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", `mobile-nav-${index}`);
+    button.innerHTML = "<span></span><span></span><span></span>";
+    nav.id = nav.id || `mobile-nav-${index}`;
+    header.appendChild(button);
+    button.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      header.classList.toggle("menu-open", open);
+      document.body.classList.toggle("mobile-menu-open", open);
+      button.setAttribute("aria-expanded", String(open));
+    });
+  });
 };
 
 const injectSearch = () => {
@@ -495,7 +638,7 @@ const injectSearch = () => {
   const render = (query = "") => {
     const q = query.trim().toLowerCase();
     const items = pageCatalog.filter((item) => !q || `${item.title} ${item.keywords}`.toLowerCase().includes(q));
-    results.innerHTML = items.map((item) => `<a href="${fromSite(item.url)}"><span>${item.title}</span><small>${item.keywords.split(" ").slice(0, 4).join(" · ")}</small></a>`).join("");
+    results.innerHTML = items.map((item) => `<a href="${fromSite(item.url)}"><span>${item.title}</span><small>${item.keywords.split(" ").slice(0, 4).join(" &middot; ")}</small></a>`).join("");
   };
   render();
   document.addEventListener("click", (event) => {
@@ -538,16 +681,14 @@ const injectCookieBanner = () => {
 };
 
 const injectAgeGate = () => {
-  const acceptedAt = Number(localStorage.getItem("cdm-age-ok-at") || 0);
-  const thirtyDays = 30 * 24 * 60 * 60 * 1000;
-  if (acceptedAt && Date.now() - acceptedAt < thirtyDays) return;
+  if (sessionStorage.getItem("cdm-age-ok") === "true") return;
   if (document.querySelector("[data-age-gate]")) return;
 
   document.body.classList.add("age-gate-active");
   document.body.insertAdjacentHTML("beforeend", `
     <section class="age-gate" data-age-gate role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
       <div class="age-gate-card">
-        <img src="${fromSite("images/casa-del-mulino-official-logo.jpg")}" alt="" class="age-gate-logo">
+        <img src="${fromSite("/images/casa-del-mulino-official-logo.jpg")}" alt="" class="age-gate-logo">
         <p class="eyebrow">Leeftijdscontrole</p>
         <h2 id="age-gate-title">Welkom bij Casa del Mulino</h2>
         <p>Casa del Mulino verkoopt uitsluitend alcoholhoudende producten aan personen van 18 jaar en ouder. Door verder te gaan bevestig je dat je minimaal 18 jaar oud bent.</p>
@@ -563,12 +704,16 @@ const injectAgeGate = () => {
 
   const gate = document.querySelector("[data-age-gate]");
   gate.querySelector("[data-age-yes]")?.addEventListener("click", () => {
-    localStorage.setItem("cdm-age-ok-at", String(Date.now()));
+    sessionStorage.setItem("cdm-age-ok", "true");
     document.body.classList.remove("age-gate-active");
     gate.remove();
   });
   gate.querySelector("[data-age-no]")?.addEventListener("click", () => {
+    sessionStorage.removeItem("cdm-age-ok");
     gate.querySelector("[data-age-denied]").hidden = false;
+    window.setTimeout(() => {
+      window.location.href = "https://www.nix18.nl/";
+    }, 900);
   });
 };
 
@@ -603,6 +748,7 @@ const initShopExperience = async () => {
   injectCart();
   injectMusicPlayer();
   enhanceFooter();
+  enhanceMobileNavigation();
   bindShopForms();
   injectSearch();
   injectBreadcrumbs();

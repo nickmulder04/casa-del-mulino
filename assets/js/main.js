@@ -5,7 +5,7 @@ const reveals = document.querySelectorAll(".reveal");
 const lightbox = document.querySelector("[data-lightbox-modal]");
 const loader = document.querySelector("[data-loader]");
 const parallaxItems = document.querySelectorAll("[data-parallax]");
-const imageFallback = "images/casa-del-mulino-official-logo.jpg";
+const imageFallback = "/images/casa-del-mulino-official-logo.jpg";
 
 const revealCriticalHomepageCards = () => {
   document.querySelectorAll("#collectie .product-card, .exclusive-collections .collection-bundle").forEach((card) => {

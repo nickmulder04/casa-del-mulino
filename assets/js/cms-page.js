@@ -78,7 +78,7 @@ const fallbackProducts = [
     id: "limoncello",
     name: "Casa del Mulino Limoncello",
     flavor: "Citroen",
-    image: "images/product-limoncello.jpg",
+    image: "/images/product-limoncello.jpg",
     short: "Fris, zonnig en intens citroenachtig.",
     size: "500 ml",
     alcohol: "30% vol"
@@ -87,7 +87,7 @@ const fallbackProducts = [
     id: "arancello",
     name: "Casa del Mulino Arancello",
     flavor: "Sinaasappel",
-    image: "images/product-arancello.jpg",
+    image: "/images/product-arancello.jpg",
     short: "Warme sinaasappeltonen met een bitterzoete finale.",
     size: "500 ml",
     alcohol: "30% vol"
@@ -96,7 +96,7 @@ const fallbackProducts = [
     id: "meloncello",
     name: "Casa del Mulino Meloncello",
     flavor: "Meloen",
-    image: "images/product-meloncello.jpg",
+    image: "/images/product-meloncello.jpg",
     short: "Licht, rond en fruitig met zachte meloen.",
     size: "500 ml",
     alcohol: "30% vol"
@@ -107,18 +107,32 @@ const fallbackCollections = [
   {
     id: "duo",
     name: "Duo Collectie",
-    price: 45,
-    image: "images/limoncello-arancello-case.jpg",
+    price: 47.5,
+    image: "/images/limoncello-arancello-case.jpg",
     description: "De perfecte combinatie om twee smaken van Casa del Mulino te ontdekken."
   },
   {
     id: "signature",
     name: "Signature Collectie",
-    price: 65,
+    price: 69.95,
     badge: "Complete Collectie",
-    image: "images/product-collection-three.jpg",
+    image: "/images/product-collection-three.jpg",
     description: "Ontdek de volledige collectie van Casa del Mulino. Drie unieke smaken, samengebracht in een exclusieve selectie."
+  },
+  {
+    id: "mixmatch",
+    name: "Mix & Match Collectie",
+    price: 47.5,
+    badge: "Create Your Collection",
+    image: "/images/casa-del-mulino-flessen.jpg",
+    description: "Stel jouw eigen Casa del Mulino collectie samen en ontvang automatisch bundelvoordeel."
   }
+];
+
+const fallbackInstagramItems = [
+  { image: "/images/instagram-limoncello-post.jpg", caption: "Van schil tot fles." },
+  { image: "/images/limoncello-citrus-still-life.jpg", caption: "Italiaanse sfeer, Nederlands vakmanschap." },
+  { image: "/images/product-collection-three.jpg", caption: "Drie smaken, met aandacht gemaakt." }
 ];
 
 const revealRenderedContent = (root = document) => {
@@ -151,13 +165,13 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
   }
 
   const intro = document.querySelector(".intro-band p");
-  if (intro && home?.sections?.[0]?.text) intro.textContent = home.sections[0].text;
+  if (intro && home?.intro) intro.textContent = home.intro;
 
   const story = home?.sections?.[0];
   const storySection = document.querySelector("#verhaal");
   if (story && storySection) {
     const heading = storySection.querySelector(".section-heading h2");
-    const storyTitle = storySection.querySelector(".story-copy h3");
+    const storyTitle = storySection.querySelector(".story-copy h2, .story-copy h3");
     const storyParagraph = storySection.querySelector(".story-copy p:not(.eyebrow):not(.signature)");
     const storyImage = storySection.querySelector(".story-image img");
     if (heading) heading.textContent = story.title || heading.textContent;
@@ -215,7 +229,11 @@ const applyHomeContent = ({ home, products, collections, instagram, contact }) =
     if (heading) heading.textContent = instagram.title || heading.textContent;
     if (instagramGrid) {
       instagramGrid.href = instagram.url || instagramGrid.href;
-      instagramGrid.innerHTML = htmlList(instagram.items || [], (item) => `<img src="${cmsPath(item.image)}" loading="lazy" alt="${item.caption || instagram.title}">`);
+      const instagramItems = [...(instagram.items || []).filter((item) => item?.image)];
+      fallbackInstagramItems.forEach((item) => {
+        if (instagramItems.length < 3 && !instagramItems.some((existing) => existing.image === item.image)) instagramItems.push(item);
+      });
+      instagramGrid.innerHTML = htmlList(instagramItems, (item) => `<img src="${cmsPath(item.image)}" loading="lazy" alt="${item.caption || instagram.title}">`);
       revealRenderedContent(instagramGrid);
     }
   }

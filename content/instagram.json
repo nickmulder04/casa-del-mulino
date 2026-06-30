@@ -4,7 +4,8 @@
   "url": "https://www.instagram.com/casa.del.mulino",
   "handle": "@casa.del.mulino",
   "items": [
-    { "image": "images/instagram-limoncello-post.jpg", "caption": "Van schil tot fles." },
-    { "image": "images/limoncello-citrus-still-life.jpg", "caption": "Italiaanse sfeer, Nederlands vakmanschap." }
+    { "image": "/images/instagram-limoncello-post.jpg", "caption": "Van schil tot fles." },
+    { "image": "/images/limoncello-citrus-still-life.jpg", "caption": "Italiaanse sfeer, Nederlands vakmanschap." },
+    { "image": "/images/product-collection-three.jpg", "caption": "Drie smaken, met aandacht gemaakt." }
   ]
 }

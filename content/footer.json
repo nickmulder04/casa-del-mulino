@@ -2,8 +2,10 @@
   "links": [
     { "label": "Home", "url": "index.html" },
     { "label": "Over Casa del Mulino", "url": "over.html" },
-    { "label": "Ons verhaal", "url": "verhaal.html" },
+    { "label": "Ons verhaal", "url": "ons-verhaal.html" },
+    { "label": "Onze belofte", "url": "onze-belofte.html" },
     { "label": "Producten", "url": "smaken.html" },
+    { "label": "Serveren", "url": "serveren.html" },
     { "label": "Recepten", "url": "recepten.html" },
     { "label": "Proeverijen & Masterclasses", "url": "proeverijen.html" },
     { "label": "Contact", "url": "contact.html" },

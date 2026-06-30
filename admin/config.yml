@@ -99,6 +99,7 @@ collections:
               - { label: "Naam", name: "name", widget: "string" }
               - { label: "Prijs", name: "price", widget: "number", value_type: "float" }
               - { label: "Inhoud", name: "size", widget: "string" }
+              - { label: "Aantal flessen voor prijsberekening", name: "bottles", widget: "number", value_type: "int", default: 1 }
               - { label: "Foto", name: "image", widget: "image" }
               - { label: "Beschikbaar", name: "available", widget: "boolean", default: true }
               - { label: "Badge", name: "badge", widget: "string", required: false }
@@ -215,6 +216,7 @@ collections:
         file: "content/home.json"
         fields:
           - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Introband tekst", name: "intro", widget: "text", required: false }
           - label: "Hero"
             name: "hero"
             widget: "object"

@@ -3,24 +3,24 @@
     {
       "id": "duo",
       "name": "Duo Collectie",
-      "price": 45,
+      "price": 47.5,
       "size": "2 x 500 ml",
-      "image": "images/limoncello-arancello-case.jpg",
+      "bottles": 2,
+      "image": "/images/limoncello-arancello-case.jpg",
       "available": true,
       "description": "De perfecte combinatie om twee smaken van Casa del Mulino te ontdekken.",
       "bundle": [
-        "Kies zelf twee flessen",
-        "Limoncello + Arancello",
-        "Limoncello + Meloncello",
-        "Arancello + Meloncello"
+        "Casa del Mulino Limoncello",
+        "Casa del Mulino Arancello"
       ]
     },
     {
       "id": "signature",
       "name": "Signature Collectie",
-      "price": 65,
+      "price": 69.95,
       "size": "3 x 500 ml",
-      "image": "images/product-collection-three.jpg",
+      "bottles": 3,
+      "image": "/images/product-collection-three.jpg",
       "available": true,
       "badge": "Complete Collectie",
       "description": "Ontdek de volledige collectie van Casa del Mulino. Drie unieke smaken, samengebracht in een exclusieve selectie.",
@@ -28,6 +28,22 @@
         "Casa del Mulino Limoncello",
         "Casa del Mulino Arancello",
         "Casa del Mulino Meloncello"
+      ]
+    },
+    {
+      "id": "mixmatch",
+      "name": "Mix & Match Collectie",
+      "price": 47.5,
+      "size": "2 of 3 x 500 ml",
+      "bottles": 2,
+      "image": "/images/casa-del-mulino-flessen.jpg",
+      "available": true,
+      "badge": "Create Your Collection",
+      "description": "Stel jouw eigen Casa del Mulino collectie samen. Kies zelf je favoriete smaken en ontvang automatisch bundelvoordeel. Een kortingscode is niet nodig.",
+      "bundle": [
+        "2 flessen - €47,50",
+        "3 flessen - €69,95",
+        "Vrije smaakcombinatie"
       ]
     }
   ]
