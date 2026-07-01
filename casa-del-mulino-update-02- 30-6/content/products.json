@@ -1,0 +1,136 @@
+{
+  "products": [
+    {
+      "id": "limoncello",
+      "name": "Casa del Mulino Limoncello",
+      "subtitle": "Citroen likeur",
+      "flavor": "Citroen",
+      "accent": "#d9b72f",
+      "price": 24.95,
+      "size": "500 ml",
+      "alcohol": "30% vol",
+      "available": true,
+      "stockStatus": "Beschikbaar",
+      "collection": "Huidige collectie",
+      "comingSoonSize": "700 ml",
+      "image": "/images/product-limoncello.jpg",
+      "gallery": [
+        "/images/product-limoncello.jpg",
+        "/images/limoncello-fles.jpg",
+        "/images/hero-limoncello-citrus-trees.jpg",
+        "/images/limoncello-citrus-still-life.jpg"
+      ],
+      "short": "Fris, zonnig en intens citroenachtig.",
+      "description": "De signatuur van Casa del Mulino: helder, fris en gemaakt voor het moment na het eten.",
+      "longDescription": "Casa del Mulino Limoncello wordt in kleine batches gemaakt met zorgvuldig geschilde citroenen. Alleen het aromatische gele deel van de schil wordt gebruikt voor een frisse, volle citrusbeleving.",
+      "ingredients": [
+        "Citroenschillen",
+        "Alcohol",
+        "Water",
+        "Suiker"
+      ],
+      "serveTips": [
+        "IJskoud serveren",
+        "Perfect na het eten",
+        "Ook geschikt voor spritz en cocktails"
+      ],
+      "foodPairing": [
+        "Vanille-ijs",
+        "Tiramisu",
+        "Citroentaart",
+        "Vers fruit"
+      ],
+      "batchInfo": "Iedere batch wordt in kleine hoeveelheden gemaakt en kan subtiel verschillen in geur, kleur en karakter."
+      ,"seoTitle": "Casa del Mulino Limoncello | Ambachtelijke citroenlikeur",
+      "seoDescription": "Ontdek Casa del Mulino Limoncello: frisse citroenlikeur, met de hand gemaakt in Nederland."
+    },
+    {
+      "id": "arancello",
+      "name": "Casa del Mulino Arancello",
+      "subtitle": "Sinaasappel likeur",
+      "flavor": "Sinaasappel",
+      "accent": "#cf7228",
+      "price": 24.95,
+      "size": "500 ml",
+      "alcohol": "30% vol",
+      "available": true,
+      "stockStatus": "Beschikbaar",
+      "collection": "Huidige collectie",
+      "comingSoonSize": "700 ml",
+      "image": "/images/product-arancello.jpg",
+      "gallery": [
+        "/images/product-arancello.jpg",
+        "/images/arancello-fles.jpg",
+        "/images/limoncello-arancello-case.jpg",
+        "/images/product-collection-three.jpg"
+      ],
+      "short": "Warme sinaasappeltonen met een bitterzoete finale.",
+      "description": "Arancello brengt rijpe sinaasappel, mediterrane warmte en een ronde afdronk samen.",
+      "longDescription": "Casa del Mulino Arancello is een warme, ronde citruslikeur met zachte sinaasappeltonen. Ambachtelijk gemaakt voor aperitivo, dessert en lange avonden aan tafel.",
+      "ingredients": [
+        "Sinaasappelschillen",
+        "Alcohol",
+        "Water",
+        "Suiker"
+      ],
+      "serveTips": [
+        "Gekoeld serveren",
+        "Mooi bij pure chocolade",
+        "Elegant in spritz en prosecco"
+      ],
+      "foodPairing": [
+        "Panna cotta",
+        "Pure chocolade",
+        "Sinaasappelsorbet",
+        "Tiramisu"
+      ],
+      "batchInfo": "Kleine batches behouden de zachte citruswarmte en het handgemaakte karakter."
+      ,"seoTitle": "Casa del Mulino Arancello | Ambachtelijke sinaasappellikeur",
+      "seoDescription": "Ontdek Casa del Mulino Arancello: warme sinaasappellikeur, handgemaakt in kleine batches."
+    },
+    {
+      "id": "meloncello",
+      "name": "Casa del Mulino Meloncello",
+      "subtitle": "Meloen likeur",
+      "flavor": "Meloen",
+      "accent": "#71925a",
+      "price": 24.95,
+      "size": "500 ml",
+      "alcohol": "30% vol",
+      "available": true,
+      "stockStatus": "Beschikbaar",
+      "collection": "Huidige collectie",
+      "comingSoonSize": "700 ml",
+      "image": "/images/product-meloncello.jpg",
+      "gallery": [
+        "/images/product-meloncello.jpg",
+        "/images/meloncello-fles.jpg",
+        "/images/product-collection-three.jpg",
+        "/images/casa-del-mulino-flessen.jpg"
+      ],
+      "short": "Licht, rond en fruitig met zachte meloen.",
+      "description": "Een vriendelijke, verrassende likeur voor lange avonden en zachte desserts.",
+      "longDescription": "Casa del Mulino Meloncello is zacht, fruitig en verrassend. Een ambachtelijke meloenlikeur voor desserts, cocktails en zomerse momenten.",
+      "ingredients": [
+        "Meloen",
+        "Alcohol",
+        "Water",
+        "Suiker"
+      ],
+      "serveTips": [
+        "Goed gekoeld serveren",
+        "Heerlijk over vanille-ijs",
+        "Mooi in zomerse cocktails"
+      ],
+      "foodPairing": [
+        "Vanille-ijs",
+        "Vers fruit",
+        "Meloendessert",
+        "Panna cotta"
+      ],
+      "batchInfo": "In kleine oplage gemaakt zodat fruitigheid en zachtheid in balans blijven."
+      ,"seoTitle": "Casa del Mulino Meloncello | Ambachtelijke meloenlikeur",
+      "seoDescription": "Ontdek Casa del Mulino Meloncello: zachte meloenlikeur, volledig met de hand gemaakt in Nederland."
+    }
+  ]
+}

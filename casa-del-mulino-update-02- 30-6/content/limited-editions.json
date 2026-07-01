@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "limited-editions",
+      "name": "Limited Editions",
+      "available": false,
+      "description": "Beperkte batches en seizoensspecials verschijnen hier zodra ze beschikbaar zijn.",
+      "image": "/images/casa-del-mulino-official-logo.jpg"
+    }
+  ]
+}

@@ -2354,6 +2354,103 @@ h3 {
   text-align: center;
 }
 
+.taste-guide {
+  max-width: 1060px;
+  margin-inline: auto;
+}
+
+.taste-progress {
+  height: 4px;
+  margin-bottom: 34px;
+  background: rgba(199, 161, 90, .18);
+  overflow: hidden;
+}
+
+.taste-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--gold);
+  transition: width .45s ease;
+}
+
+.taste-step,
+.taste-result {
+  padding: clamp(30px, 5vw, 62px);
+  border: 1px solid rgba(199, 161, 90, .32);
+  background: rgba(255, 251, 242, .82);
+  box-shadow: 0 28px 82px rgba(32, 21, 18, .10);
+}
+
+.taste-step {
+  display: none;
+}
+
+.taste-step.active {
+  display: block;
+  animation: fadeUp .45s ease both;
+}
+
+.taste-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.taste-options button {
+  min-height: 82px;
+  padding: 20px;
+  border: 1px solid rgba(74, 32, 37, .16);
+  background: rgba(255, 255, 255, .34);
+  color: var(--burgundy);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .28s ease, border-color .28s ease, background .28s ease;
+}
+
+.taste-options button:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  background: rgba(199, 161, 90, .10);
+}
+
+.taste-result-grid {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: clamp(24px, 5vw, 52px);
+  align-items: center;
+}
+
+.taste-result-grid img {
+  width: 100%;
+  height: min(52vw, 560px);
+  object-fit: cover;
+}
+
+.taste-result ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.taste-result li {
+  padding: 10px 12px;
+  border: 1px solid rgba(199, 161, 90, .28);
+  color: var(--green);
+  background: rgba(199, 161, 90, .08);
+  font-weight: 800;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .exclusive-collections {
   background:
     radial-gradient(circle at 18% 12%, rgba(199, 161, 90, .14), transparent 20rem),
@@ -3088,6 +3185,10 @@ h3 {
   .checkout-gift-options,
   .promise-grid { grid-template-columns: 1fr; }
   .promise-panel { text-align: left; }
+  .taste-options,
+  .taste-result-grid,
+  .taste-result ul { grid-template-columns: 1fr; }
+  .taste-result-grid img { height: 360px; }
   .music-fab span:last-child { display: none; }
   .music-shell {
     right: 12px;
@@ -3143,12 +3244,14 @@ h3 {
   }
 
   .static-bundle-card {
-    grid-template-columns: .95fr 1.05fr;
-    min-height: 460px;
+    grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .static-bundle-card img {
-    min-height: 460px;
+    height: min(62vw, 430px);
+    min-height: 300px;
+    object-fit: cover;
   }
 }
 
@@ -3223,7 +3326,7 @@ h3 {
   }
 
   .static-bundle-card img {
-    height: 430px;
+    height: 320px;
     min-height: 0;
   }
 

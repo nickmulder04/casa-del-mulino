@@ -1,4 +1,4 @@
-const sharedPairings = [
+﻿const sharedPairings = [
   {
     title: "Vanille-ijs",
     image: "/images/limoncello-spritz-service.jpg",
@@ -328,3 +328,5 @@ const applyProductCmsContent = async () => {
 };
 
 applyProductCmsContent();
+
+

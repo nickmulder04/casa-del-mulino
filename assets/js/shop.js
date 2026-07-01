@@ -532,6 +532,7 @@ const pageCatalog = [
   { title: "Ons Verhaal", url: "ons-verhaal.html", keywords: "mulder mulino verhaal molen italiaanse inspiratie" },
   { title: "Onze Belofte", url: "onze-belofte.html", keywords: "belofte aandacht eerlijk leren zorg handgemaakt" },
   { title: "Serveren", url: "serveren.html", keywords: "serveren ijskoud spritz dessert cocktail serveertips" },
+  { title: "Smaakmaker", url: "smaakmaker.html", keywords: "keuzehulp smaak advies limoncello arancello meloncello" },
   { title: "Recepten", url: "recepten.html", keywords: "cocktail spritz tonic dessert recepten" },
   { title: "FAQ", url: "faq.html", keywords: "vragen bewaren troebel houdbaarheid verzending cadeau" },
   { title: "Ambacht", url: "ambacht.html", keywords: "handgemaakt ambacht schillen trekken bottelen" },
@@ -545,6 +546,7 @@ const pageLabels = {
   "ons-verhaal.html": "Ons Verhaal",
   "onze-belofte.html": "Onze Belofte",
   "serveren.html": "Serveren",
+  "smaakmaker.html": "Smaakmaker",
   "limoncello.html": "Limoncello",
   "arancello.html": "Arancello",
   "meloncello.html": "Meloncello",
@@ -567,6 +569,7 @@ const primaryNavLinks = [
   { label: "Ons Verhaal", url: "ons-verhaal.html" },
   { label: "Smaken", url: "smaken.html" },
   { label: "Serveren", url: "serveren.html" },
+  { label: "Smaakmaker", url: "smaakmaker.html" },
   { label: "Recepten", url: "recepten.html" },
   { label: "Bestellen", url: "bestellen.html" },
   { label: "Contact", url: "contact.html" }

@@ -1,0 +1,56 @@
+{
+  "pages": [
+    {
+      "slug": "index",
+      "title": "Casa del Mulino",
+      "seoTitle": "Casa del Mulino | Ambachtelijke Italiaanse likeur uit Nederland",
+      "metaDescription": "Ontdek Casa del Mulino: Limoncello, Arancello en Meloncello, met de hand gemaakt in Nederland.",
+      "heroImage": "/images/hero-limoncello-citrus-trees.jpg",
+      "blocks": [
+        {
+          "heading": "Italie ontmoet Nederlands vakmanschap",
+          "text": "Iedere fles wordt in kleine batches gemaakt, met tijd, aandacht en liefde voor kwaliteit."
+        }
+      ]
+    },
+    {
+      "slug": "ons-verhaal",
+      "title": "Ons Verhaal",
+      "seoTitle": "Ons verhaal | Casa del Mulino",
+      "metaDescription": "Het persoonlijke verhaal achter Casa del Mulino: van Mulder naar Mulino, Nederlandse roots en Italiaanse inspiratie.",
+      "heroImage": "/images/hero-limoncello-citrus-trees.jpg",
+      "blocks": [
+        {
+          "heading": "Van Mulder naar Mulino",
+          "text": "Casa del Mulino betekent letterlijk Het Huis van de Molen. De naam ontstond vanuit mijn achternaam Mulder en het Italiaanse woord Mulino."
+        }
+      ]
+    },
+    {
+      "slug": "onze-belofte",
+      "title": "Onze Belofte",
+      "seoTitle": "Onze belofte | Casa del Mulino",
+      "metaDescription": "Waar Casa del Mulino voor staat: aandacht, eerlijkheid, leren, zorg en trots op iedere fles.",
+      "heroImage": "/images/product-collection-three.jpg",
+      "blocks": [
+        {
+          "heading": "Met aandacht blijven maken",
+          "text": "Casa del Mulino is nog jong, maar een ding verandert niet: de manier waarop we werken."
+        }
+      ]
+    },
+    {
+      "slug": "serveren",
+      "title": "Hoe serveer je Casa del Mulino?",
+      "seoTitle": "Hoe serveer je Casa del Mulino?",
+      "metaDescription": "Serveertips voor Casa del Mulino: ijskoud puur, als Spritz, in cocktails of bij desserts.",
+      "heroImage": "/images/limoncello-spritz-service.jpg",
+      "blocks": [
+        {
+          "heading": "Serveer ijskoud",
+          "text": "Bewaar de fles in de vriezer of koelkast en schenk direct in een gekoeld likeurglas."
+        }
+      ]
+    }
+  ]
+}

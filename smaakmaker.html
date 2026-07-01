@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smaakmaker | Casa del Mulino</title>
+  <meta name="description" content="Ontdek met de Casa del Mulino Smaakmaker welke likeur het beste bij jouw smaakmoment past.">
+  <link rel="canonical" href="https://casadelmulino.nl/smaakmaker.html">
+  <meta property="og:title" content="Smaakmaker | Casa del Mulino">
+  <meta property="og:description" content="Een stijlvolle keuzehulp voor Limoncello, Arancello en Meloncello.">
+  <meta property="og:image" content="/images/product-collection-three.jpg">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header solid">
+    <a class="brand" href="index.html"><img src="/images/casa-del-mulino-official-logo.jpg" alt="" class="brand-logo"><span><strong>Casa del Mulino</strong><small>Fatto a Mano</small></span></a>
+    <nav class="main-nav visible"><a href="smaken.html">Smaken</a><a href="recepten.html">Recepten</a><a href="serveren.html">Serveren</a><a href="bestellen.html">Bestellen</a></nav>
+  </header>
+  <main>
+    <section class="page-hero taste-hero">
+      <div>
+        <p class="eyebrow">Smaakmaker</p>
+        <h1>Ontdek jouw Casa del Mulino.</h1>
+        <p>Beantwoord een paar korte vragen en ontdek welke smaak of collectie het beste past bij jouw moment.</p>
+      </div>
+      <img src="/images/product-collection-three.jpg" alt="Casa del Mulino Limoncello Arancello en Meloncello">
+    </section>
+
+    <section class="section taste-guide" data-taste-guide>
+      <div class="taste-progress" aria-hidden="true"><span data-taste-progress></span></div>
+      <div class="taste-step active" data-step="0">
+        <p class="eyebrow">Stap 1 van 4</p>
+        <h2>Welke smaak spreekt je het meest aan?</h2>
+        <div class="taste-options">
+          <button type="button" data-choice="limoncello">Fris & citrus</button>
+          <button type="button" data-choice="arancello">Fruitig & zacht</button>
+          <button type="button" data-choice="meloncello">Tropisch & verfrissend</button>
+          <button type="button" data-choice="signature">Verras mij</button>
+        </div>
+      </div>
+      <div class="taste-step" data-step="1">
+        <p class="eyebrow">Stap 2 van 4</p>
+        <h2>Wanneer geniet je het liefst?</h2>
+        <div class="taste-options">
+          <button type="button" data-choice="limoncello">Na het diner</button>
+          <button type="button" data-choice="arancello">Tijdens een borrel</button>
+          <button type="button" data-choice="meloncello">Op een zomers terras</button>
+          <button type="button" data-choice="signature">Samen met vrienden</button>
+        </div>
+      </div>
+      <div class="taste-step" data-step="2">
+        <p class="eyebrow">Stap 3 van 4</p>
+        <h2>Hoe drink je hem het liefst?</h2>
+        <div class="taste-options">
+          <button type="button" data-choice="limoncello">IJskoud puur</button>
+          <button type="button" data-choice="meloncello">Met ijs</button>
+          <button type="button" data-choice="arancello">In een cocktail</button>
+          <button type="button" data-choice="signature">Ik wil meerdere smaken proberen</button>
+        </div>
+      </div>
+      <div class="taste-step" data-step="3">
+        <p class="eyebrow">Stap 4 van 4</p>
+        <h2>Voor wie koop je Casa del Mulino?</h2>
+        <div class="taste-options">
+          <button type="button" data-choice="limoncello">Voor mijzelf</button>
+          <button type="button" data-choice="arancello">Cadeau</button>
+          <button type="button" data-choice="signature">Voor een diner of feestje</button>
+          <button type="button" data-choice="mixmatch">Ik wil zelf combineren</button>
+        </div>
+      </div>
+
+      <div class="taste-result" data-taste-result hidden>
+        <p class="eyebrow">Jouw advies</p>
+        <div class="taste-result-grid">
+          <img src="/images/product-limoncello.jpg" alt="" data-result-image>
+          <div>
+            <h2 data-result-title>Casa del Mulino Limoncello</h2>
+            <p data-result-copy>Fris, krachtig en verfrissend.</p>
+            <ul data-result-list></ul>
+            <div class="hero-actions">
+              <a class="button primary" href="smaken.html" data-result-product>Bekijk product</a>
+              <a class="button secondary dark" href="bestellen.html">Direct bestellen</a>
+            </div>
+            <button class="text-link" type="button" data-taste-reset>Doe de Smaakmaker opnieuw</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"></footer>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cms-page.js" defer></script>
+  <script src="assets/js/shop.js" defer></script>
+  <script>
+    (() => {
+      const guide = document.querySelector("[data-taste-guide]");
+      if (!guide) return;
+      const steps = [...guide.querySelectorAll("[data-step]")];
+      const progress = guide.querySelector("[data-taste-progress]");
+      const result = guide.querySelector("[data-taste-result]");
+      const scores = { limoncello: 0, arancello: 0, meloncello: 0, signature: 0, mixmatch: 0 };
+      const advice = {
+        limoncello: {
+          title: "Casa del Mulino Limoncello",
+          image: "/images/product-limoncello.jpg",
+          url: "limoncello.html",
+          copy: "Fris, krachtig en verfrissend. De klassieke citruslikeur voor liefhebbers van pure citroensmaak.",
+          list: ["IJskoud", "Na het diner", "Spritz", "Cocktails"]
+        },
+        arancello: {
+          title: "Casa del Mulino Arancello",
+          image: "/images/product-arancello.jpg",
+          url: "arancello.html",
+          copy: "Zacht en fruitig met ronde sinaasappeltonen. Toegankelijk en perfect om samen van te genieten.",
+          list: ["Borrel", "Cocktails", "Zomerse avonden", "Cadeau"]
+        },
+        meloncello: {
+          title: "Casa del Mulino Meloncello",
+          image: "/images/product-meloncello.jpg",
+          url: "meloncello.html",
+          copy: "Zacht, fruitig en zomers met frisse meloensmaak. Ideaal voor warme dagen en verrassende cocktails.",
+          list: ["Aperitief", "Cocktails", "Terras", "Zomerse momenten"]
+        },
+        signature: {
+          title: "Signature Collectie",
+          image: "/images/product-collection-three.jpg",
+          url: "bestellen.html#collecties",
+          copy: "Ontdek alle drie de smaken van Casa del Mulino in een complete selectie.",
+          list: ["Limoncello", "Arancello", "Meloncello", "Samengesteld om te delen"]
+        },
+        mixmatch: {
+          title: "Mix & Match Collectie",
+          image: "/images/casa-del-mulino-flessen.jpg",
+          url: "bestellen.html#bestellen",
+          copy: "Stel jouw eigen favoriete combinatie samen en ontvang automatisch bundelvoordeel.",
+          list: ["2 flessen voor €47,50", "3 flessen voor €69,95", "Vrije smaakcombinatie"]
+        }
+      };
+      let index = 0;
+      const showStep = () => {
+        steps.forEach((step, stepIndex) => step.classList.toggle("active", stepIndex === index));
+        progress.style.width = `${(index / steps.length) * 100}%`;
+      };
+      const showResult = () => {
+        const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+        const data = advice[winner];
+        steps.forEach((step) => step.classList.remove("active"));
+        progress.style.width = "100%";
+        result.hidden = false;
+        result.querySelector("[data-result-title]").textContent = data.title;
+        result.querySelector("[data-result-copy]").textContent = data.copy;
+        result.querySelector("[data-result-image]").src = data.image;
+        result.querySelector("[data-result-image]").alt = data.title;
+        result.querySelector("[data-result-product]").href = data.url;
+        result.querySelector("[data-result-list]").innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
+      };
+      guide.addEventListener("click", (event) => {
+        const choice = event.target.closest("[data-choice]");
+        if (choice) {
+          scores[choice.dataset.choice] += 1;
+          if (choice.dataset.choice === "signature" || choice.dataset.choice === "mixmatch") scores[choice.dataset.choice] += 1;
+          index += 1;
+          if (index >= steps.length) showResult();
+          else showStep();
+        }
+        if (event.target.closest("[data-taste-reset]")) {
+          Object.keys(scores).forEach((key) => { scores[key] = 0; });
+          index = 0;
+          result.hidden = true;
+          showStep();
+        }
+      });
+      showStep();
+    })();
+  </script>
+</body>
+</html>

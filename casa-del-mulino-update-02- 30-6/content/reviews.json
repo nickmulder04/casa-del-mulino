@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "name": "Sanne",
+      "date": "2026-06-01",
+      "stars": 5,
+      "text": "Zacht, fris en duidelijk met aandacht gemaakt. Een fles die je graag op tafel zet.",
+      "photo": ""
+    },
+    {
+      "name": "Mark",
+      "date": "2026-06-08",
+      "stars": 5,
+      "text": "De Signature Collectie voelt echt als een cadeau. Mooie smaken en een luxe uitstraling.",
+      "photo": ""
+    }
+  ]
+}

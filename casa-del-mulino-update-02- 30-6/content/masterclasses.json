@@ -1,0 +1,12 @@
+{
+  "title": "Masterclasses",
+  "status": "Binnenkort beschikbaar",
+  "intro": "Casa del Mulino werkt aan kleinschalige masterclasses rond ambachtelijke likeur.",
+  "image": "/images/casa-del-mulino-flessen.jpg",
+  "cards": [
+    { "title": "Uitleg & verhaal", "text": "Een heldere uitleg over Casa del Mulino, het ontstaan van het merk en de basis van ambachtelijke likeur." },
+    { "title": "Drie smaken proeven", "text": "Maak kennis met Limoncello, Arancello en Meloncello." },
+    { "title": "Zelf schillen", "text": "Ervaar waarom precies schillen belangrijk is." },
+    { "title": "Zelf mengen", "text": "Ontdek hoe zachtheid, frisheid en alcoholpercentage samen de smaak bepalen." }
+  ]
+}

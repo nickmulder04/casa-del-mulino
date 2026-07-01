@@ -1,4 +1,4 @@
-const recipeBase = new URL("../../", document.currentScript.src).href;
+﻿const recipeBase = new URL("../../", document.currentScript.src).href;
 const rootPath = (path) => new URL(path.replace(/^\/+/, ""), recipeBase).href;
 const currentSlug = document.body.dataset.recipe;
 const recipeRoot = document.querySelector("[data-recipe-detail]");
@@ -123,3 +123,5 @@ const renderRecipe = (recipes) => {
 };
 
 loadRecipeItems().then(renderRecipe);
+
+

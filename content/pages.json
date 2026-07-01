@@ -51,6 +51,19 @@
           "text": "Bewaar de fles in de vriezer of koelkast en schenk direct in een gekoeld likeurglas."
         }
       ]
+    },
+    {
+      "slug": "smaakmaker",
+      "title": "Smaakmaker",
+      "seoTitle": "Smaakmaker | Casa del Mulino",
+      "metaDescription": "Ontdek met de Casa del Mulino Smaakmaker welke likeur het beste bij jouw smaakmoment past.",
+      "heroImage": "/images/product-collection-three.jpg",
+      "blocks": [
+        {
+          "heading": "Ontdek jouw Casa del Mulino",
+          "text": "Beantwoord een paar korte vragen en ontdek welke smaak of collectie het beste past bij jouw moment."
+        }
+      ]
     }
   ]
 }

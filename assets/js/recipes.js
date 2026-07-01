@@ -1,4 +1,4 @@
-const recipeFallback = window.CDM_RECIPES || [
+﻿const recipeFallback = window.CDM_RECIPES || [
   {
     title: "Limoncello Spritz",
     slug: "limoncello-spritz",
@@ -71,3 +71,5 @@ const renderRecipeLibrary = (recipes) => {
 };
 
 loadRecipes().then(renderRecipeLibrary);
+
+
